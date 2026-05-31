@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IRONHORN Master Documentation</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Georgia,serif;background:#0c0a07;color:#F0EDE8;padding:40px 20px;max-width:900px;margin:0 auto;line-height:1.7}
+h1{font-family:Arial,sans-serif;font-size:36px;font-weight:900;letter-spacing:3px;background:linear-gradient(135deg,#F0B429,#F08030,#BF5700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px}
+h2{font-family:Arial,sans-serif;font-size:20px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#F0B429;margin:36px 0 12px;padding-bottom:8px;border-bottom:1px solid rgba(191,87,0,0.3)}
+h3{font-family:Arial,sans-serif;font-size:15px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#F08030;margin:20px 0 8px}
+p{font-size:14px;color:#C4A882;margin-bottom:10px;line-height:1.75}
+.sub{font-size:13px;color:#7A5F40;font-style:italic;margin-bottom:30px}
+.card{background:rgba(22,17,12,0.9);border:1px solid rgba(191,87,0,0.25);border-radius:12px;padding:18px;margin-bottom:14px}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-right:6px;margin-bottom:4px}
+.bo{background:rgba(191,87,0,0.18);color:#F08030;border:1px solid rgba(191,87,0,0.35)}
+.bg{background:rgba(76,175,125,0.15);color:#4CAF7D;border:1px solid rgba(76,175,125,0.3)}
+.by{background:rgba(240,180,41,0.15);color:#F0B429;border:1px solid rgba(240,180,41,0.3)}
+.br{background:rgba(229,57,53,0.15);color:#E53935;border:1px solid rgba(229,57,53,0.3)}
+table{width:100%;border-collapse:collapse;margin-bottom:14px;font-size:13px}
+th{background:rgba(191,87,0,0.2);color:#F0B429;padding:9px 12px;text-align:left;font-family:Arial,sans-serif;letter-spacing:1px;font-size:11px;text-transform:uppercase}
+td{padding:9px 12px;border-bottom:1px solid rgba(191,87,0,0.1);color:#C4A882;vertical-align:top}
+tr:last-child td{border-bottom:none}
+code{background:rgba(191,87,0,0.12);border:1px solid rgba(191,87,0,0.25);border-radius:4px;padding:2px 7px;font-family:monospace;font-size:12px;color:#F0B429}
+.url{font-family:monospace;font-size:14px;color:#4CAF7D;background:rgba(76,175,125,0.1);border:1px solid rgba(76,175,125,0.25);border-radius:8px;padding:10px 14px;display:block;margin:8px 0;word-break:break-all}
+.warn{background:rgba(229,57,53,0.1);border:1px solid rgba(229,57,53,0.25);border-radius:8px;padding:12px 14px;font-size:13px;color:#ff8a80;margin:10px 0}
+.note{background:rgba(76,175,125,0.08);border:1px solid rgba(76,175,125,0.2);border-radius:8px;padding:12px 14px;font-size:13px;color:#4CAF7D;margin:10px 0}
+ul{padding-left:20px;margin-bottom:10px}
+li{font-size:14px;color:#C4A882;margin-bottom:5px;line-height:1.6}
+.section-intro{font-size:14px;color:#7A5F40;font-style:italic;margin-bottom:16px}
+hr{border:none;border-top:1px solid rgba(191,87,0,0.2);margin:30px 0}
+</style>
+</head>
+<body>
+
+<h1>IRONHORN</h1>
+<div class="sub">Master Documentation · Built for Terry L. Arneson · May 31, 2026</div>
+
+<h2>1. Mission</h2>
+<div class="card">
+<p><strong style="color:#F08030">IRONHORN</strong> is a personal health command center built specifically for Terry Arneson — U.S. Army veteran, North Dakota farm boy, Midstream Superintendent, husband to Victoria (Vic), father to Austen, Dillon, Emaleigh (Em), Faith (Tudi), and Terrick. Grandpa to Paisley, Paxtyn, and baby Blaire.</p>
+<p>Terry's father Alvin D. Arneson died at 55 from a heart attack — the exact same disease Terry fights. IRONHORN exists so Terry does not leave his family the way Alvin had to leave his.</p>
+<p><em style="color:#7A5F40">For God. For Vic. For family.</em></p>
+</div>
+
+<h2>2. Terry's Medical Profile</h2>
+<div class="card">
+<table>
+<tr><th>Item</th><th>Detail</th></tr>
+<tr><td>Name</td><td>Terry L. Arneson</td></tr>
+<tr><td>Start Weight</td><td>211 lbs</td></tr>
+<tr><td>Goal Weight</td><td>200 → 190 → 180-185 lbs</td></tr>
+<tr><td>Height</td><td>65.39 inches</td></tr>
+<tr><td>Diagnoses</td><td>Chronic Systolic Heart Failure, PVCs, CAD, Sleep Apnea, Type 2 Diabetes, Obesity</td></tr>
+<tr><td>Occupation</td><td>Midstream Superintendent, Williston Basin, ND</td></tr>
+<tr><td>Email</td><td>tarneson42@gmail.com</td></tr>
+</table>
+</div>
+
+<h2>3. Medications</h2>
+<div class="card">
+<h3>7:30 AM — Breakfast (Original)</h3>
+<table>
+<tr><th>Medication</th><th>Dose</th><th>Purpose</th><th>Status</th></tr>
+<tr><td>Allopurinol</td><td>300mg</td><td>Gout prevention</td><td><span class="badge bg">Original</span></td></tr>
+<tr><td>Aspirin</td><td>81mg</td><td>Antiplatelet / CAD</td><td><span class="badge bg">Original</span></td></tr>
+<tr><td>Flomax</td><td>0.4mg</td><td>Urinary</td><td><span class="badge bg">Original</span></td></tr>
+<tr><td>Multivitamin</td><td>Daily</td><td>General health</td><td><span class="badge bg">Original</span></td></tr>
+<tr><td>Farxiga</td><td>5mg</td><td>Diabetes + Heart Failure</td><td><span class="badge by">New</span></td></tr>
+</table>
+<h3>6:00 PM — Supper</h3>
+<table>
+<tr><th>Medication</th><th>Dose</th><th>Purpose</th><th>Status</th></tr>
+<tr><td>Metformin</td><td>1000mg</td><td>Diabetes</td><td><span class="badge bg">Original</span></td></tr>
+<tr><td>Losartan</td><td>25mg</td><td>Blood Pressure / Heart</td><td><span class="badge by">New</span></td></tr>
+<tr><td>Spironolactone</td><td>12.5mg</td><td>Heart Failure / Fluid</td><td><span class="badge by">New</span></td></tr>
+</table>
+<h3>8:00 PM — Evening</h3>
+<table>
+<tr><th>Medication</th><th>Dose</th><th>Purpose</th><th>Status</th></tr>
+<tr><td>Pravastatin</td><td>40mg</td><td>Cholesterol</td><td><span class="badge bg">Original</span></td></tr>
+</table>
+<h3>9:30 PM — Bedtime</h3>
+<table>
+<tr><th>Medication</th><th>Dose</th><th>Purpose</th><th>Status</th></tr>
+<tr><td>Metoprolol Succinate</td><td>12.5mg</td><td>Heart Rate / PVCs</td><td><span class="badge by">New</span></td></tr>
+</table>
+<div class="warn">Farxiga currently out of stock at pharmacy. Expected Monday. Watch weight daily — 2+ lb gain means call doctor. Keep sodium under 1500mg until back on it.</div>
+</div>
+
+<h2>4. Daily Nutrition Goals</h2>
+<div class="card">
+<table>
+<tr><th>Nutrient</th><th>Target</th><th>Reason</th></tr>
+<tr><td>Calories</td><td>1700-1900 / day</td><td>Weight loss toward 185 lbs</td></tr>
+<tr><td>Protein</td><td>160-180g / day</td><td>Muscle preservation while losing weight</td></tr>
+<tr><td>Carbs</td><td>Under 45g per meal</td><td>Type 2 Diabetes blood sugar control</td></tr>
+<tr><td>Water</td><td>100-120 oz / day</td><td>Heart failure hydration management</td></tr>
+<tr><td>Sodium</td><td>Under 2000mg / day</td><td>Heart failure fluid retention prevention</td></tr>
+<tr><td>Fiber</td><td>25g+ / day</td><td>Metabolic and cardiac health</td></tr>
+</table>
+</div>
+
+<h2>5. App Architecture</h2>
+<div class="card">
+<p>IRONHORN is a single HTML file Progressive Web App (PWA). No server required. No framework. No build process. Pure HTML, CSS, and vanilla JavaScript only — built for maximum Safari iOS compatibility.</p>
+<table>
+<tr><th>Tab</th><th>Contents</th></tr>
+<tr><td>🏠 Home</td><td>ECG animation, 6 stat tiles, Now card, Next Up reminders, Identity strip, Mission statement</td></tr>
+<tr><td>📅 Schedule</td><td>18-item daily timeline 5:45AM-9:30PM, tap-to-complete pills, progress badge</td></tr>
+<tr><td>🚴 Workouts</td><td>5 cardio cards, Army PT Mon-Sun, 28-day calendar, frequency heatmap</td></tr>
+<tr><td>🏥 Medical</td><td>8 vital cards, water cups, nutrition rings, Food Tracker (USDA), myAir CPAP, 10 medications</td></tr>
+<tr><td>🏛️ Board</td><td>Claude offline coaching, 9 directors with smart reports, family wall, Dad memorial, teams</td></tr>
+<tr><td>🤝 Assist</td><td>Quick actions, integrations hub, Omron logger, Cronometer setup, emergency contacts, symptom logger, med refills, testing notes</td></tr>
+</table>
+</div>
+
+<h2>6. Technical Specifications</h2>
+<div class="card">
+<table>
+<tr><th>Item</th><th>Detail</th></tr>
+<tr><td>File type</td><td>Single .html file — no dependencies</td></tr>
+<tr><td>File size</td><td>~146 KB</td></tr>
+<tr><td>JavaScript</td><td>Vanilla JS only — var declarations, standard for loops, no modern syntax</td></tr>
+<tr><td>Safari compatibility</td><td>Zero optional chaining, zero backticks, zero object spread, zero nullish coalescing, zero regex literals, zero setLineDash, zero Math.apply</td></tr>
+<tr><td>Storage</td><td>localStorage with try/catch — keys: ih_YYYY-MM-DD (daily), ih_f (frequency), ih_c (comments), ih_n (notes), ih_ec (emergency contacts), ih_sym (symptoms), ih_ref (refills)</td></tr>
+<tr><td>Data resets daily</td><td>Schedule checkboxes, water cups, calorie/protein/carb totals, food log, medication checkboxes</td></tr>
+<tr><td>Data persists</td><td>Vitals history, workout frequency, comments, notes, lab results, myAir scores</td></tr>
+<tr><td>APIs used</td><td>USDA FoodData API (free, DEMO_KEY) for food search only</td></tr>
+<tr><td>AI features</td><td>All offline — pre-written smart responses using actual logged data</td></tr>
+</table>
+</div>
+
+<h2>7. Hosting</h2>
+<div class="card">
+<h3>GitHub Repository</h3>
+<span class="url">github.com/tarneson42-cloud/ironhorn</span>
+<h3>Live URL</h3>
+<span class="url">tarneson42-cloud.github.io/ironhorn/IRONHORN.html</span>
+<h3>GitHub Account</h3>
+<table>
+<tr><th>Item</th><th>Detail</th></tr>
+<tr><td>Username</td><td>tarneson42-cloud</td></tr>
+<tr><td>Email</td><td>tarneson42@gmail.com</td></tr>
+<tr><td>Repository</td><td>ironhorn (public)</td></tr>
+<tr><td>Branch</td><td>main</td></tr>
+</table>
+<h3>How to Update IRONHORN</h3>
+<ul>
+<li>Get updated IRONHORN.html from Claude</li>
+<li>Go to github.com/tarneson42-cloud/ironhorn</li>
+<li>Tap Add file → Upload files</li>
+<li>Upload new IRONHORN.html</li>
+<li>Tap Commit changes</li>
+<li>Wait 2 minutes — live URL updates automatically</li>
+</ul>
+<div class="note">Every time Claude builds an update, upload it to GitHub and the live URL refreshes automatically. No reinstalling needed.</div>
+</div>
+
+<h2>8. iPhone Installation</h2>
+<div class="card">
+<ul>
+<li>Open Safari on iPhone</li>
+<li>Go to: tarneson42-cloud.github.io/ironhorn/IRONHORN.html</li>
+<li>Tap Share button (box with arrow at bottom)</li>
+<li>Tap Add to Home Screen</li>
+<li>Name it IRONHORN</li>
+<li>Tap Add</li>
+</ul>
+<div class="note">Must use Safari specifically. Chrome and other browsers cannot add to Home Screen on iPhone.</div>
+</div>
+
+<h2>9. Apple Shortcuts Setup</h2>
+<div class="card">
+<h3>IRONHORN Sync Shortcut</h3>
+<p>Runs at 5:50 AM daily. Pulls from Apple Health and opens IRONHORN.</p>
+<table>
+<tr><th>Action</th><th>Settings</th></tr>
+<tr><td>Find Health Samples</td><td>Type: Body Mass, Sort: Latest First, Limit: 1 → variable: weight</td></tr>
+<tr><td>Find Health Samples</td><td>Type: Systolic Blood Pressure, Sort: Latest First, Limit: 1 → variable: systolic</td></tr>
+<tr><td>Find Health Samples</td><td>Type: Diastolic Blood Pressure, Sort: Latest First, Limit: 1 → variable: diastolic</td></tr>
+<tr><td>Find Health Samples</td><td>Type: Heart Rate, Sort: Latest First, Limit: 1 → variable: heartrate</td></tr>
+<tr><td>Find Health Samples</td><td>Type: Blood Glucose, Sort: Latest First, Limit: 1 → variable: glucose</td></tr>
+<tr><td>Find Health Samples</td><td>Type: Sleep Analysis, Sort: Latest First, Limit: 1 → variable: sleep</td></tr>
+<tr><td>Open App</td><td>Safari → opens IRONHORN</td></tr>
+</table>
+<h3>Daily Notification Automations (11 total)</h3>
+<table>
+<tr><th>Time</th><th>Alert</th></tr>
+<tr><td>5:45 AM</td><td>Wake Up — Log vitals</td></tr>
+<tr><td>6:15 AM</td><td>Bike Time — 60 min 12 miles</td></tr>
+<tr><td>7:30 AM</td><td>Morning Meds — 5 pills</td></tr>
+<tr><td>9:30 AM</td><td>Hydration Check — 16 oz water</td></tr>
+<tr><td>10:00 AM</td><td>Morning Snack</td></tr>
+<tr><td>12:00 PM</td><td>Lunch + water</td></tr>
+<tr><td>3:00 PM</td><td>Afternoon Snack + water</td></tr>
+<tr><td>6:00 PM</td><td>Supper Meds — 3 pills</td></tr>
+<tr><td>6:45 PM</td><td>Evening Activity</td></tr>
+<tr><td>8:00 PM</td><td>Pravastatin</td></tr>
+<tr><td>9:30 PM</td><td>Metoprolol + CPAP on</td></tr>
+</table>
+</div>
+
+<h2>10. Data Integrations</h2>
+<div class="card">
+<table>
+<tr><th>App</th><th>Method</th><th>Status</th></tr>
+<tr><td>Apple Health</td><td>IRONHORN Sync Shortcut pulls weight, BP, HR, glucose, sleep</td><td><span class="badge bg">Connected</span></td></tr>
+<tr><td>Oura Ring</td><td>Oura app → Profile → App Settings → Apple Health → ON</td><td><span class="badge bg">Connected</span></td></tr>
+<tr><td>myAir ResMed</td><td>Manual entry daily — ResMed locks their data</td><td><span class="badge by">Manual</span></td></tr>
+<tr><td>Cronometer</td><td>Profile → Settings → Data Sources → Apple Health → ON</td><td><span class="badge bg">Connected</span></td></tr>
+<tr><td>Omron BP7900</td><td>Omron Connect app → Health App Integration → ON (arriving June 4)</td><td><span class="badge bo">June 4</span></td></tr>
+<tr><td>Contour Diabetes</td><td>Check Contour app settings for Apple Health sync</td><td><span class="badge by">Manual</span></td></tr>
+<tr><td>AllTrails</td><td>AllTrails → Profile → Health → ON</td><td><span class="badge by">Manual</span></td></tr>
+<tr><td>Mayo Clinic Portal</td><td>Manual lab entry in IRONHORN after appointments</td><td><span class="badge by">Manual</span></td></tr>
+</table>
+</div>
+
+<h2>11. Board of Directors</h2>
+<div class="card">
+<table>
+<tr><th>Director</th><th>Role</th><th>Specialty</th></tr>
+<tr><td>🤖 Claude</td><td>Chief Intelligence Officer</td><td>Executive briefing, coaching, wins/gaps</td></tr>
+<tr><td>🍎 Apple Health</td><td>Chief Medical Officer</td><td>Weight trend, BP, biometrics</td></tr>
+<tr><td>💍 Oura Ring</td><td>Chief Recovery Officer</td><td>Sleep score, HRV, readiness</td></tr>
+<tr><td>😴 myAir ResMed</td><td>Director of Sleep Therapy</td><td>CPAP score, hours, AHI, seal</td></tr>
+<tr><td>🏃 Apple Activity</td><td>Director Physical Ops</td><td>Bike ride, steps, calories</td></tr>
+<tr><td>🦴 Hinge Health</td><td>Director Rehabilitation</td><td>PT compliance, mobility</td></tr>
+<tr><td>🗺️ AllTrails</td><td>Director Outdoor Ops</td><td>Walks, hikes, outdoor activity</td></tr>
+<tr><td>🩸 Contour Diabetes</td><td>Chief Metabolic Officer</td><td>Glucose, carb management</td></tr>
+<tr><td>🏥 Mayo Clinic</td><td>Medical Advisory Chairman</td><td>Medications, labs, cardiac overview</td></tr>
+</table>
+</div>
+
+<h2>12. Family</h2>
+<div class="card">
+<table>
+<tr><th>Person</th><th>Role</th></tr>
+<tr><td>👑 Victoria "Vic"</td><td>Wife — Partner — Heart</td></tr>
+<tr><td>💪 Austen</td><td>Oldest Son</td></tr>
+<tr><td>💛 Jadyn</td><td>Daughter-in-Law (Austen's wife)</td></tr>
+<tr><td>🌸 Paisley</td><td>Granddaughter</td></tr>
+<tr><td>⚡ Paxtyn</td><td>Grandson</td></tr>
+<tr><td>🔥 Dillon</td><td>Son</td></tr>
+<tr><td>🌻 Jad</td><td>Dillon's girlfriend</td></tr>
+<tr><td>🌟 Blaire</td><td>Baby Granddaughter</td></tr>
+<tr><td>✨ Emaleigh "Em"</td><td>Daughter — LDS Missionary (Sister Arneson)</td></tr>
+<tr><td>🦋 Faith "Tudi"</td><td>Twin Daughter</td></tr>
+<tr><td>🌾 Terrick</td><td>Youngest Son</td></tr>
+<tr><td>🕊️ Alvin D. Arneson</td><td>Father — 1951-2006 — Gone at 55 from heart attack — The WHY</td></tr>
+</table>
+</div>
+
+<h2>13. Teams and Identity</h2>
+<div class="card">
+<table>
+<tr><th>Identity</th><th>Detail</th></tr>
+<tr><td>⚔️ U.S. Army</td><td>Veteran — warrior mindset</td></tr>
+<tr><td>🇺🇸 American</td><td>Patriot</td></tr>
+<tr><td>🌾 North Dakota</td><td>Stanley farm boy — Lostwood — Midstream Mafia</td></tr>
+<tr><td>🦬 NDSU Bison</td><td>8 National Championships</td></tr>
+<tr><td>🤘 Texas Longhorns</td><td>Hook Em — Big 12/SEC</td></tr>
+<tr><td>⚔️ Minnesota Vikings</td><td>Skol — NFC North</td></tr>
+<tr><td>⚾ Minnesota Twins</td><td>AL Central — Target Field</td></tr>
+</table>
+</div>
+
+<h2>14. Safari Compatibility Rules</h2>
+<div class="card">
+<p>These patterns crash Safari on iPhone silently. Never use them in IRONHORN JavaScript:</p>
+<table>
+<tr><th>Pattern</th><th>Example</th><th>Fix</th></tr>
+<tr><td>Backtick template literals</td><td>`Hello ${name}`</td><td>Use string concatenation</td></tr>
+<tr><td>Optional chaining</td><td>obj?.property</td><td>Use if(obj) checks</td></tr>
+<tr><td>Nullish coalescing</td><td>val ?? default</td><td>Use val || default</td></tr>
+<tr><td>Object spread</td><td>{...obj}</td><td>Use Object.assign or manual copy</td></tr>
+<tr><td>setLineDash</td><td>ctx.setLineDash([4,4])</td><td>Draw manual dash segments</td></tr>
+<tr><td>Math.min.apply</td><td>Math.min.apply(null,arr)</td><td>Use for loop</td></tr>
+<tr><td>createLinearGradient</td><td>ctx.createLinearGradient()</td><td>Use flat fill color</td></tr>
+<tr><td>innerHTML with onchange</td><td>div.innerHTML = ... onchange="fn('key')"</td><td>Use createElement + data attributes</td></tr>
+<tr><td>Regex with backticks</td><td>/```/g</td><td>Remove or use string methods</td></tr>
+<tr><td>Undefined function calls</td><td>rMe calls initQuickFoods()</td><td>Verify every called function exists</td></tr>
+</table>
+</div>
+
+<h2>15. Features to Build Next</h2>
+<div class="card">
+<table>
+<tr><th>Priority</th><th>Feature</th><th>Reason</th></tr>
+<tr><td><span class="badge br">Critical</span></td><td>Daily weight fluid alert</td><td>2+ lb overnight gain = fluid retention = call doctor</td></tr>
+<tr><td><span class="badge br">Critical</span></td><td>Sodium tracker</td><td>Heart failure — under 2000mg daily is non-negotiable</td></tr>
+<tr><td><span class="badge bo">High</span></td><td>PVC symptom tracker</td><td>Log when felt, duration, trigger — data for cardiologist</td></tr>
+<tr><td><span class="badge bo">High</span></td><td>Weekly report card</td><td>Sunday summary — bike rides, med compliance, avg BP/weight</td></tr>
+<tr><td><span class="badge bo">High</span></td><td>A1C and BNP trend graph</td><td>Most important long-term markers for diabetes and heart failure</td></tr>
+<tr><td><span class="badge by">Medium</span></td><td>Pre-appointment summary</td><td>One tap = 30 days of data for Mayo Clinic visit</td></tr>
+<tr><td><span class="badge by">Medium</span></td><td>Heart rate zone tracker</td><td>Stay in 120-145 bpm zone during bike ride with CAD</td></tr>
+<tr><td><span class="badge by">Medium</span></td><td>Medication missed alert</td><td>Red alert if Farxiga or Metoprolol not checked by scheduled time</td></tr>
+</table>
+</div>
+
+<h2>16. Build History</h2>
+<div class="card">
+<table>
+<tr><th>Date</th><th>Version</th><th>Key Changes</th></tr>
+<tr><td>May 31, 2026</td><td>v1.0</td><td>Initial complete build — all 6 tabs, ECG, schedule, workouts, medical, board, assist</td></tr>
+<tr><td>May 31, 2026</td><td>v1.1</td><td>Safari fixes — removed all backticks, optional chaining, setLineDash</td></tr>
+<tr><td>May 31, 2026</td><td>v1.2</td><td>Lightened background, increased all font sizes for readability</td></tr>
+<tr><td>May 31, 2026</td><td>v1.3</td><td>Food AI replaced with free USDA FoodData API search</td></tr>
+<tr><td>May 31, 2026</td><td>v1.4</td><td>Full Arneson family added — 11 members, all 4 teams, Vikings and Twins</td></tr>
+<tr><td>May 31, 2026</td><td>v1.5</td><td>Board directors upgraded — 9 smart offline reports using actual logged data</td></tr>
+<tr><td>May 31, 2026</td><td>v1.6</td><td>Emergency contacts, symptom logger, med refill tracker, lab results added</td></tr>
+<tr><td>May 31, 2026</td><td>v1.7</td><td>Medical tab crash fixed — initQuickFoods missing function, myAir innerHTML quote conflict</td></tr>
+<tr><td>May 31, 2026</td><td>v1.8</td><td>All localStorage wrapped in try/catch for Safari Files app compatibility</td></tr>
+<tr><td>May 31, 2026</td><td>v1.9</td><td>Deployed to GitHub Pages — tarneson42-cloud.github.io/ironhorn/IRONHORN.html</td></tr>
+<tr><td>May 31, 2026</td><td>v2.0</td><td>Medication original vs new labels, Farxiga warning banner added</td></tr>
+</table>
+</div>
+
+<hr>
+<p style="text-align:center;color:#7A5F40;font-style:italic;font-size:13px">For God. For Vic. For family. Every single day. ⚔️</p>
+<p style="text-align:center;color:#7A5F40;font-size:12px;margin-top:6px">IRONHORN · Built by Claude for Terry L. Arneson · May 31, 2026</p>
+
+</body>
+</html>
