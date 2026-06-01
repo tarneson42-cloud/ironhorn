@@ -452,6 +452,118 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:Barlow,sans-serif;b
   </div>
 </div>
 
+<div class="sec" style="margin-bottom:8px">🎯 50-Day Mission Coach</div>
+<div style="margin:0 18px 14px;background:rgba(50,32,18,0.95);border:1px solid rgba(191,87,0,0.35);border-radius:16px;overflow:hidden">
+
+  <!-- MISSION HEADER -->
+  <div style="padding:13px 14px;background:linear-gradient(135deg,rgba(191,87,0,0.2),rgba(191,87,0,0.07));border-bottom:1px solid var(--b1)">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;letter-spacing:1px;color:var(--gold)">50-DAY MISSION</div>
+        <div style="font-size:12px;color:var(--tx3);margin-top:1px">25 lbs in 50 days · 211 lbs → 186 lbs</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:var(--o3)" id="days-left">50</div>
+        <div style="font-size:10px;color:var(--tx3);text-transform:uppercase;letter-spacing:1px">Days Left</div>
+      </div>
+    </div>
+    <!-- Progress bar -->
+    <div style="height:6px;background:rgba(255,255,255,0.07);border-radius:3px;overflow:hidden;margin-bottom:6px">
+      <div id="mission-bar" style="height:100%;background:linear-gradient(90deg,var(--o),var(--gold));border-radius:3px;width:0%;transition:width 0.6s"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+      <div style="text-align:center;background:rgba(0,0,0,0.3);border-radius:8px;padding:7px">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:var(--o3)" id="lbs-lost">0</div>
+        <div style="font-size:10px;color:var(--tx3)">lbs lost</div>
+      </div>
+      <div style="text-align:center;background:rgba(0,0,0,0.3);border-radius:8px;padding:7px">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:var(--gold)" id="lbs-to-go">25</div>
+        <div style="font-size:10px;color:var(--tx3)">lbs to go</div>
+      </div>
+      <div style="text-align:center;background:rgba(0,0,0,0.3);border-radius:8px;padding:7px">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:var(--gr)" id="lbs-per-week">3.5</div>
+        <div style="font-size:10px;color:var(--tx3)">lbs/week</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SET MISSION START -->
+  <div style="padding:11px 14px;border-bottom:1px solid var(--b1)">
+    <div style="font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--tx3);margin-bottom:7px">Mission Start Date</div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <input type="date" id="mission-start" style="flex:1;background:rgba(255,255,255,0.08);border:1px solid var(--b1);border-radius:9px;color:var(--tx);font-family:Barlow,sans-serif;font-size:14px;padding:8px 11px;outline:none" onchange="saveMission()">
+      <button onclick="saveMission()" style="padding:9px 14px;background:linear-gradient(135deg,var(--o),var(--o2));border:none;border-radius:9px;color:white;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;cursor:pointer">Set</button>
+    </div>
+  </div>
+
+  <!-- DAILY NUTRITION REPORT -->
+  <div style="padding:13px 14px;border-bottom:1px solid var(--b1)">
+    <div style="font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--tx3);margin-bottom:10px">Today's Nutrition Report</div>
+
+    <!-- Macros grid -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px">
+
+      <div style="background:rgba(0,0,0,0.3);border-radius:10px;padding:10px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+          <div style="font-size:12px;color:var(--tx3);font-weight:700">Calories</div>
+          <div style="font-size:10px;color:var(--tx3)">1700-1900</div>
+        </div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900" id="nc-cal-val" style="color:var(--tx)">0</div>
+        <div style="height:4px;background:rgba(255,255,255,0.07);border-radius:2px;margin-top:5px;overflow:hidden">
+          <div id="nc-cal-bar" style="height:100%;border-radius:2px;background:var(--o);width:0%;transition:width 0.5s"></div>
+        </div>
+        <div style="font-size:11px;margin-top:3px" id="nc-cal-msg"></div>
+      </div>
+
+      <div style="background:rgba(0,0,0,0.3);border-radius:10px;padding:10px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+          <div style="font-size:12px;color:var(--tx3);font-weight:700">Protein</div>
+          <div style="font-size:10px;color:var(--tx3)">160-180g</div>
+        </div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900" id="nc-prot-val" style="color:var(--tx)">0g</div>
+        <div style="height:4px;background:rgba(255,255,255,0.07);border-radius:2px;margin-top:5px;overflow:hidden">
+          <div id="nc-prot-bar" style="height:100%;border-radius:2px;background:var(--gr);width:0%;transition:width 0.5s"></div>
+        </div>
+        <div style="font-size:11px;margin-top:3px" id="nc-prot-msg"></div>
+      </div>
+
+      <div style="background:rgba(0,0,0,0.3);border-radius:10px;padding:10px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+          <div style="font-size:12px;color:var(--tx3);font-weight:700">Carbs</div>
+          <div style="font-size:10px;color:var(--tx3)">under 45g/meal</div>
+        </div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900" id="nc-carb-val" style="color:var(--tx)">0g</div>
+        <div style="height:4px;background:rgba(255,255,255,0.07);border-radius:2px;margin-top:5px;overflow:hidden">
+          <div id="nc-carb-bar" style="height:100%;border-radius:2px;background:var(--bl);width:0%;transition:width 0.5s"></div>
+        </div>
+        <div style="font-size:11px;margin-top:3px" id="nc-carb-msg"></div>
+      </div>
+
+      <div style="background:rgba(0,0,0,0.3);border-radius:10px;padding:10px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+          <div style="font-size:12px;color:var(--tx3);font-weight:700">Water</div>
+          <div style="font-size:10px;color:var(--tx3)">110 oz goal</div>
+        </div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900" id="nc-water-val" style="color:var(--tx)">0oz</div>
+        <div style="height:4px;background:rgba(255,255,255,0.07);border-radius:2px;margin-top:5px;overflow:hidden">
+          <div id="nc-water-bar" style="height:100%;border-radius:2px;background:var(--bl);width:0%;transition:width 0.5s"></div>
+        </div>
+        <div style="font-size:11px;margin-top:3px" id="nc-water-msg"></div>
+      </div>
+
+    </div>
+
+    <!-- Coach verdict -->
+    <div id="nc-verdict" style="padding:12px 13px;border-radius:10px;background:rgba(0,0,0,0.3);border-left:3px solid var(--o);font-size:13px;color:var(--tx2);line-height:1.65">Log your meals above to get your nutrition coaching report.</div>
+  </div>
+
+  <!-- WHAT TO EAT NEXT -->
+  <div style="padding:13px 14px">
+    <div style="font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--tx3);margin-bottom:10px">What to Eat Next</div>
+    <div id="nc-suggestions" style="display:flex;flex-direction:column;gap:7px"></div>
+  </div>
+
+</div>
 <div class="sec" style="margin-bottom:8px">myAir CPAP</div>
 <div class="mac">
   <div class="mah"><div class="mal">😴</div><div><div class="man">myAir by ResMed</div><div class="mar">Sleep Therapy Director</div></div></div>
@@ -474,7 +586,16 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:Barlow,sans-serif;b
 <div class="mwp" id="mwp"></div>
 
 </div>
-<div class="scr" id="scr-board"><div class="sb"><div class="sbt">🏛️ Board</div><div class="sbr"><div class="bdg bo">9 Directors</div></div></div><div style="height:8px"></div><div class="bch"><div class="bcav">🤖</div><div class="bcn">Claude</div><div class="bcr">Chief Intelligence Officer</div></div><div class="cot" id="cot"></div><div class="chw"><div class="chm" id="chm"><div class="msc"><div class="msca">🤖</div><div class="mscb">Hook Em Terry! Army veteran. ND farm boy. NDSU Bison. Texas Longhorn. Vic's husband. Em's dad. Paisley, Paxtyn, and baby Blaire's Grandpa. All of that is in this fight. Your dad Alvin left at 55 — you will not. I am with you. Let's win this. 🧡</div></div></div><div class="cir"><input class="cin" id="chti" placeholder="Ask your coach..." onkeydown="if(event.key==='Enter')sendChat()"><button class="csd" onclick="sendChat()">↑</button></div></div><div class="sec" style="margin-bottom:8px">The Board</div><div class="drl" id="drl"></div><div class="sec" style="margin-bottom:8px">Terry's Roots</div><div class="idw"><div class="idwg"><div class="idc"><div class="idci">⚔️</div><div class="idcn" style="color:#7ab84e">U.S. Army</div><div class="idcd">Served with honor. Warrior mindset every day.</div><span class="idct" style="color:#7ab84e;border-color:rgba(91,138,60,0.4);background:rgba(91,138,60,0.08)">Veteran</span></div><div class="idc"><div class="idci">🇺🇸</div><div class="idcn" style="color:#e07070">American</div><div class="idcd">Patriot. Freedom worth fighting for — including your health.</div><span class="idct" style="color:#e07070;border-color:rgba(220,80,80,0.35);background:rgba(220,80,80,0.07)">Patriot</span></div><div class="idc"><div class="idci">🌾</div><div class="idcn" style="color:#e8c97a">North Dakota</div><div class="idcd">Stanley farm boy. Lostwood. Midstream Mafia. Built tough.</div><span class="idct" style="color:#e8c97a;border-color:rgba(232,201,122,0.35);background:rgba(232,201,122,0.06)">Farm Strong</span></div><div class="idc"><div class="idci">🦬</div><div class="idcn" style="color:var(--gold)">NDSU Bison</div><div class="idcd">8 national championships. Champions grind every day.</div><span class="idct" style="color:var(--gold);border-color:rgba(240,180,41,0.4);background:rgba(240,180,41,0.07)">Go Bison</span></div>
+<div class="scr" id="scr-board"><div class="sb"><div class="sbt">🏛️ Board</div><div class="sbr"><div class="bdg bo">9 Directors</div></div></div><div style="height:8px"></div><div class="bch"><div class="bcav">🤖</div><div class="bcn">Claude</div><div class="bcr">Chief Intelligence Officer</div></div>
+<div style="margin:0 18px 10px;padding:15px;background:linear-gradient(135deg,rgba(233,30,140,0.15),rgba(233,30,140,0.05));border:1px solid rgba(233,30,140,0.3);border-radius:16px;display:flex;align-items:center;gap:12px">
+  <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#e91e8c,#c2185b);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;box-shadow:0 0 20px rgba(233,30,140,0.3)">👩‍⚕️</div>
+  <div style="flex:1">
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:900;letter-spacing:1px;color:var(--tx)">Dr. Sarah Mitchell</div>
+    <div style="font-size:11px;color:rgba(233,30,140,0.85);font-weight:700;margin-top:1px">Chief Nutrition Officer · 50-Day Mission Coach</div>
+    <div style="font-size:12px;color:var(--tx2);margin-top:4px;font-style:italic">She pushes like Vic. Zero excuses. All love.</div>
+  </div>
+  <button onclick="requestDirReport(DR[0])" style="padding:9px 13px;background:linear-gradient(135deg,#e91e8c,#c2185b);border:none;border-radius:10px;color:white;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;letter-spacing:1px;cursor:pointer;flex-shrink:0">GET REPORT</button>
+</div><div class="cot" id="cot"></div><div class="chw"><div class="chm" id="chm"><div class="msc"><div class="msca">🤖</div><div class="mscb">Hook Em Terry! Army veteran. ND farm boy. NDSU Bison. Texas Longhorn. Vic's husband. Em's dad. Paisley, Paxtyn, and baby Blaire's Grandpa. All of that is in this fight. Your dad Alvin left at 55 — you will not. I am with you. Let's win this. 🧡</div></div></div><div class="cir"><input class="cin" id="chti" placeholder="Ask your coach..." onkeydown="if(event.key==='Enter')sendChat()"><button class="csd" onclick="sendChat()">↑</button></div></div><div class="sec" style="margin-bottom:8px">The Board</div><div class="drl" id="drl"></div><div class="sec" style="margin-bottom:8px">Terry's Roots</div><div class="idw"><div class="idwg"><div class="idc"><div class="idci">⚔️</div><div class="idcn" style="color:#7ab84e">U.S. Army</div><div class="idcd">Served with honor. Warrior mindset every day.</div><span class="idct" style="color:#7ab84e;border-color:rgba(91,138,60,0.4);background:rgba(91,138,60,0.08)">Veteran</span></div><div class="idc"><div class="idci">🇺🇸</div><div class="idcn" style="color:#e07070">American</div><div class="idcd">Patriot. Freedom worth fighting for — including your health.</div><span class="idct" style="color:#e07070;border-color:rgba(220,80,80,0.35);background:rgba(220,80,80,0.07)">Patriot</span></div><div class="idc"><div class="idci">🌾</div><div class="idcn" style="color:#e8c97a">North Dakota</div><div class="idcd">Stanley farm boy. Lostwood. Midstream Mafia. Built tough.</div><span class="idct" style="color:#e8c97a;border-color:rgba(232,201,122,0.35);background:rgba(232,201,122,0.06)">Farm Strong</span></div><div class="idc"><div class="idci">🦬</div><div class="idcn" style="color:var(--gold)">NDSU Bison</div><div class="idcd">8 national championships. Champions grind every day.</div><span class="idct" style="color:var(--gold);border-color:rgba(240,180,41,0.4);background:rgba(240,180,41,0.07)">Go Bison</span></div>
     </div></div>
     <div class="sec" style="margin-bottom:8px">More Teams</div>
     <div class="idw"><div class="idwg">
@@ -583,6 +704,8 @@ var C28=[
 {d:25,ex:'Push-ups 5x15, Squats 4x18, Plank 55s'},{d:26,ex:'Push-ups 5x15, Lunges 3x15, Plank 55s'},{d:27,ex:'Incline PU 3x20, Squats 4x20, MC 60s'},{d:28,ch:true}
 ];
 var DR=[
+{id:'sarah',nm:'Dr. Sarah Mitchell',role:'Chief Nutrition Officer',ico:'👩‍⚕️',color:'#e91e8c',
+ prompt:'You are Dr. Sarah Mitchell, Chief Nutrition Officer on Terry Arneson board of directors. You are brilliant, warm, direct and you push Terry exactly like his wife Vic does — with love but zero tolerance for excuses. You specialize in cardiac nutrition and diabetic meal planning. You know his goals: 25 lbs in 50 days, 1700-1900 cal, 160-180g protein, carbs under 45g per meal, sodium under 2000mg, water 110 oz. You call him out when he is off track and celebrate hard when he wins. Sign off as Dr. Sarah CNO.'},
 {id:'claude',nm:'Claude',role:'Chief Intelligence Officer',ico:'🤖',color:'#BF5700',
  prompt:'You are Claude, Chief Intelligence Officer on Terry Arneson board of directors. Give a comprehensive executive briefing on his health mission today. Reference his specific numbers. Be direct, warm, Army strong. Sign off as Claude CIO.'},
 {id:'apple',nm:'Apple Health',role:'Chief Medical Officer',ico:'🍎',color:'#FF3B30',
@@ -836,7 +959,7 @@ function rC28(){
   })(C28[i])}
 }
 function rFG(){var cont=g('fg');if(!cont)return;cont.innerHTML='';var now=new Date();for(var i=27;i>=0;i--){var d=new Date(now);d.setDate(d.getDate()-i);var key=d.toISOString().split('T')[0];var s={};try{s=JSON.parse(localStorage.getItem('ih_'+key)||'{}')}catch(e){}var n=0;for(var j=0;j<WO.length;j++){if(s['wo-'+WO[j].id])n++}var fd=ce('div');fd.className='fd'+(n>=3?' fd3':n>=2?' fd2':n>=1?' fd1':'');cont.appendChild(fd)}}
-function rMe(){rVt();rNR();rWC();rMA();rMD();rFoodLog();rQF()}
+function rMe(){rVt();rNR();rWC();rMA();rMD();rFoodLog();rQF();rNutrCoach()}
 function rVt(){
   var cont=g('vg');if(!cont)return;
   cont.innerHTML='';
@@ -1180,7 +1303,7 @@ function logFood(){
   var log=ST.foodLog||[];
   log.push({meal:meal,desc:foodResult.nm+' x'+s,cal:cal,prot:prot,carb:carb,fat:fat,srv:s+' serving'+(s!==1?'s':''),time:new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})});
   ST.foodLog=log;
-  svS();updS();rNR();rFoodLog();clearFood();
+  svS();updS();rNR();rFoodLog();rNutrCoach();clearFood();
   toast('Logged: '+foodResult.nm+' — '+cal+' cal, '+prot+'g protein');
 }
 
@@ -1330,7 +1453,43 @@ function getDirReport(dir) {
   var greeting = new Date().getHours() < 12 ? 'Good morning' : new Date().getHours() < 17 ? 'Good afternoon' : 'Good evening';
   var report   = '';
 
-  if (dir.id === 'claude') {
+  if (dir.id === 'sarah') {
+    var cal   = ST.tCal || 0;
+    var prot  = ST.tPr  || 0;
+    var carb  = ST.tCb  || 0;
+    var waterOz = wC * 8;
+    var wt    = parseFloat(ST['v-wt']) || 211;
+    var lost  = (211 - wt).toFixed(1);
+    var h     = new Date().getHours();
+    var greeting = h < 12 ? 'Good morning' : h < 17 ? 'Good afternoon' : 'Good evening';
+
+    var wins = [];
+    var fires = [];
+
+    if(cal >= 1700 && cal <= 1900) wins.push('calories on target at ' + cal);
+    else if(cal > 1900) fires.push('calories over at ' + cal + ' — that is ' + (cal-1900) + ' extra calories working against your 25-lb mission');
+    else if(cal > 0 && cal < 1700) fires.push('only ' + cal + ' calories logged — Terry you cannot lose fat and muscle at the same time, eat more protein');
+
+    if(prot >= 160) wins.push(prot + 'g protein — that is how you protect muscle while losing weight');
+    else if(prot > 0) fires.push('protein at ' + prot + 'g — you need ' + (160-prot) + 'g more today, Vic does not want you losing muscle, she wants you strong');
+
+    if(carb <= 135) wins.push('carbs controlled at ' + carb + 'g');
+    else fires.push('carbs at ' + carb + 'g — your diabetes cannot afford that, next meal is protein and vegetables only');
+
+    if(waterOz >= 96) wins.push(waterOz + ' oz water — your heart thanks you');
+    else fires.push('only ' + waterOz + ' oz water — with heart failure that is not acceptable, drink two cups right now before you do anything else');
+
+    var verdict = '';
+    if(fires.length === 0){
+      verdict = greeting + ' Terry. ' + wins.join('. ') + '. <b>This is exactly what a man on a 50-day mission looks like.</b> ' + lost + ' lbs down. Vic is watching and she is proud. Keep this up and you will hit 186 lbs. Do not touch the chips. Dr. Sarah CNO';
+    } else if(wins.length >= fires.length){
+      verdict = greeting + ' Terry. Good news first — ' + wins.join(', ') + '. Now hear me: ' + fires.join('. ') + '. <b>You are close but close does not win this mission.</b> Fix it now. Your dad left at 55 and you have the tools to change that story. Use them. Dr. Sarah CNO';
+    } else {
+      verdict = greeting + ' Terry. I am going to be straight with you because that is what Vic would do. ' + fires.join('. ') + '. <b>This is not a bad day it is a decision — and you can change it right now.</b> ' + (wins.length ? 'I see you got ' + wins[0] + ' right.' : '') + ' You have ' + (h < 20 ? (20-h) + ' hours left today to turn this around.' : 'tonight to reset and come back strong tomorrow.') + ' 25 lbs in 50 days requires daily execution. Get back on track. Dr. Sarah CNO';
+    }
+    report = verdict;
+
+  } else if (dir.id === 'claude') {
     var wins = [];
     if (biked)          wins.push('bike ride complete');
     if (medsDone >= 8)  wins.push(medsDone + ' of 10 meds taken');
@@ -1501,6 +1660,223 @@ function adjRef(idx,delta){
   svRefills(refs);rRefills();
   if(refs[idx].supply<=7)toast('⚠️ '+refs[idx].nm+' — only '+refs[idx].supply+' days left! Call for refill.');
   else toast(refs[idx].nm+': '+refs[idx].supply+' days');
+}
+
+// ── 50-DAY MISSION COACH ─────────────────────
+function saveMission(){
+  var d=document.getElementById('mission-start');
+  if(d&&d.value){
+    try{localStorage.setItem('ih_mission_start',d.value)}catch(e){}
+    rNutrCoach();
+  }
+}
+
+function rNutrCoach(){
+  var cal  = ST.tCal  || 0;
+  var prot = ST.tPr   || 0;
+  var carb = ST.tCb   || 0;
+  var water= wC * 8;
+  var wt   = parseFloat(ST['v-wt']) || 211;
+  var lost = 211 - wt;
+  var toGo = Math.max(0, wt - 186);
+  var h    = new Date().getHours();
+
+  // Mission days
+  var mStart = null;
+  try{mStart=localStorage.getItem('ih_mission_start')}catch(e){}
+  var daysLeft = 50;
+  var daysDone = 0;
+  if(mStart){
+    var start = new Date(mStart);
+    var now   = new Date();
+    daysDone  = Math.floor((now-start)/(1000*60*60*24));
+    daysLeft  = Math.max(0, 50 - daysDone);
+  }
+
+  // Update mission header
+  var dl = document.getElementById('days-left');
+  if(dl) dl.textContent = daysLeft;
+  var ll = document.getElementById('lbs-lost');
+  if(ll){ ll.textContent = lost > 0 ? lost.toFixed(1) : '0'; ll.style.color = lost > 0 ? 'var(--gr)' : 'var(--o3)' }
+  var ltg = document.getElementById('lbs-to-go');
+  if(ltg) ltg.textContent = toGo.toFixed(1);
+  var lpw = document.getElementById('lbs-per-week');
+  if(lpw){
+    var weeklyNeeded = daysLeft > 0 ? (toGo / (daysLeft/7)).toFixed(1) : '0';
+    lpw.textContent = weeklyNeeded;
+    lpw.style.color = parseFloat(weeklyNeeded) <= 2 ? 'var(--gr)' : parseFloat(weeklyNeeded) <= 3 ? 'var(--gold)' : 'var(--re)';
+  }
+  var mb = document.getElementById('mission-bar');
+  if(mb) mb.style.width = Math.min(100, Math.round(lost/25*100)) + '%';
+
+  // Load start date
+  var ms = document.getElementById('mission-start');
+  if(ms && mStart) ms.value = mStart;
+
+  // Calories
+  var calPct = Math.min(100, Math.round(cal/1800*100));
+  var calEl  = document.getElementById('nc-cal-val');
+  var calBar = document.getElementById('nc-cal-bar');
+  var calMsg = document.getElementById('nc-cal-msg');
+  if(calEl) calEl.textContent = cal;
+  if(calBar) calBar.style.width = calPct + '%';
+  var calColor = cal > 1900 ? 'var(--re)' : cal >= 1700 ? 'var(--gr)' : 'var(--gold)';
+  if(calEl) calEl.style.color = calColor;
+  if(calBar) calBar.style.background = calColor;
+  var calStatus = cal > 1900 ? '🔴 Over goal — cut back' : cal >= 1700 ? '✅ On target' : cal >= 1200 ? '🟡 Under — eat more protein' : '⚠️ Too low — muscle loss risk';
+  if(calMsg){ calMsg.textContent = calStatus; calMsg.style.color = calColor }
+
+  // Protein
+  var protPct = Math.min(100, Math.round(prot/170*100));
+  var protEl  = document.getElementById('nc-prot-val');
+  var protBar = document.getElementById('nc-prot-bar');
+  var protMsg = document.getElementById('nc-prot-msg');
+  if(protEl) protEl.textContent = prot + 'g';
+  if(protBar) protBar.style.width = protPct + '%';
+  var protColor = prot >= 160 ? 'var(--gr)' : prot >= 100 ? 'var(--gold)' : 'var(--re)';
+  if(protEl) protEl.style.color = protColor;
+  var protStatus = prot >= 160 ? '✅ Excellent' : prot >= 100 ? '🟡 Need ' + (160-prot) + 'g more' : '🔴 Critical — add protein now';
+  if(protMsg){ protMsg.textContent = protStatus; protMsg.style.color = protColor }
+
+  // Carbs
+  var carbPct = Math.min(100, Math.round(carb/135*100));
+  var carbEl  = document.getElementById('nc-carb-val');
+  var carbBar = document.getElementById('nc-carb-bar');
+  var carbMsg = document.getElementById('nc-carb-msg');
+  if(carbEl) carbEl.textContent = carb + 'g';
+  if(carbBar) carbBar.style.width = carbPct + '%';
+  var carbColor = carb > 135 ? 'var(--re)' : carb > 100 ? 'var(--gold)' : 'var(--gr)';
+  if(carbEl) carbEl.style.color = carbColor;
+  var carbStatus = carb > 135 ? '🔴 Over daily limit' : carb > 100 ? '🟡 Watch next meal' : '✅ Good control';
+  if(carbMsg){ carbMsg.textContent = carbStatus; carbMsg.style.color = carbColor }
+
+  // Water
+  var waterPct = Math.min(100, Math.round(water/110*100));
+  var waterEl  = document.getElementById('nc-water-val');
+  var waterBar = document.getElementById('nc-water-bar');
+  var waterMsg = document.getElementById('nc-water-msg');
+  if(waterEl) waterEl.textContent = water + 'oz';
+  if(waterBar) waterBar.style.width = waterPct + '%';
+  var waterColor = water >= 96 ? 'var(--gr)' : water >= 64 ? 'var(--gold)' : 'var(--re)';
+  if(waterEl) waterEl.style.color = waterColor;
+  var waterStatus = water >= 96 ? '✅ Well hydrated' : water >= 64 ? '🟡 Need ' + (110-water) + ' oz more' : '🔴 Dehydrated — drink now';
+  if(waterMsg){ waterMsg.textContent = waterStatus; waterMsg.style.color = waterColor }
+
+  // Overall verdict
+  var verdict = document.getElementById('nc-verdict');
+  if(verdict){
+    var issues = [];
+    var wins   = [];
+    if(cal > 1900) issues.push('calories over goal by ' + (cal-1900));
+    else if(cal >= 1700) wins.push('calories on target');
+    else if(cal > 0) issues.push('need ' + (1700-cal) + ' more calories — low intake risks muscle loss');
+    if(prot >= 160) wins.push('protein excellent');
+    else if(prot > 0) issues.push('need ' + (160-prot) + 'g more protein today');
+    if(carb > 135) issues.push('carbs over daily limit — blood sugar risk');
+    else if(carb > 0) wins.push('carbs well controlled');
+    if(water >= 96) wins.push('hydration strong');
+    else issues.push('need ' + (110-water) + ' oz more water');
+
+    var grade = issues.length === 0 ? 'A' : issues.length === 1 ? 'B' : issues.length === 2 ? 'C' : 'D';
+    var gradeColor = grade === 'A' ? 'var(--gr)' : grade === 'B' ? '#7ab84e' : grade === 'C' ? 'var(--gold)' : 'var(--re)';
+    var borderColor = gradeColor;
+
+    var txt = '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">';
+    txt += '<div style="font-family:Barlow Condensed,sans-serif;font-size:42px;font-weight:900;color:' + gradeColor + ';line-height:1">' + grade + '</div>';
+    txt += '<div><div style="font-family:Barlow Condensed,sans-serif;font-size:16px;font-weight:900;color:var(--tx)">Daily Grade</div>';
+    txt += '<div style="font-size:12px;color:var(--tx3)">Day ' + daysDone + ' of 50 · ' + lost.toFixed(1) + ' lbs lost</div></div></div>';
+
+    if(wins.length){
+      txt += '<div style="font-size:13px;color:var(--gr);margin-bottom:6px;font-weight:700">Wins: ' + wins.join(', ') + '</div>';
+    }
+    if(issues.length){
+      txt += '<div style="font-size:13px;color:var(--re);margin-bottom:6px;font-weight:700">Fix: ' + issues.join(' · ') + '</div>';
+    }
+
+    // Time-based advice
+    if(h < 10 && cal < 500){
+      txt += '<div style="font-size:13px;color:var(--tx2)">Morning — fuel up with high protein breakfast. Target 40g protein before your bike ride.</div>';
+    } else if(h >= 10 && h < 14 && prot < 80){
+      txt += '<div style="font-size:13px;color:var(--tx2)">Midday — protein is low. Add chicken, eggs, or Greek yogurt now to stay on track for 160g goal.</div>';
+    } else if(h >= 14 && h < 18 && prot < 120){
+      txt += '<div style="font-size:13px;color:var(--tx2)">Afternoon — still need ' + (160-prot) + 'g protein. High protein supper tonight is critical.</div>';
+    } else if(h >= 18){
+      var remaining = 1800 - cal;
+      txt += '<div style="font-size:13px;color:var(--tx2)">Evening — ' + (remaining > 0 ? remaining + ' calories remaining today.' : 'At calorie limit — make remaining meals high protein only.') + '</div>';
+    }
+
+    verdict.innerHTML = txt;
+    verdict.style.borderColor = borderColor;
+  }
+
+  // What to eat suggestions
+  rNutrSuggestions(cal, prot, carb, water, h);
+}
+
+function rNutrSuggestions(cal, prot, carb, water, h){
+  var cont = document.getElementById('nc-suggestions');
+  if(!cont) return;
+  cont.innerHTML = '';
+
+  var suggestions = [];
+
+  // Protein suggestions
+  var protNeeded = 160 - prot;
+  if(protNeeded > 40){
+    suggestions.push({ico:'🍗', title:'Chicken Breast 200g', why:'Add ' + Math.round(200*0.31) + 'g protein · ' + Math.round(200*1.65) + ' cal · 0g carbs', urgent:true, color:'var(--gr)'});
+  }
+  if(protNeeded > 20 && protNeeded <= 40){
+    suggestions.push({ico:'🥚', title:'3 Eggs + 2 Egg Whites', why:'Add 25g protein · 200 cal · great for your heart', urgent:false, color:'var(--gr)'});
+  }
+  if(protNeeded > 0 && protNeeded <= 20){
+    suggestions.push({ico:'🧀', title:'Cottage Cheese 1 cup', why:'Add 25g protein · 200 cal · low carb · perfect snack', urgent:false, color:'var(--gr)'});
+  }
+
+  // Calorie suggestions
+  var calNeeded = 1700 - cal;
+  if(calNeeded > 400 && h < 20){
+    suggestions.push({ico:'🥗', title:'Protein Bowl', why:'Chicken + brown rice + broccoli · 500 cal · 45g protein · heart healthy', urgent:false, color:'var(--o3)'});
+  }
+
+  // Water suggestions
+  var waterNeeded = 110 - water;
+  if(waterNeeded > 32){
+    suggestions.push({ico:'💧', title:'Drink 2 more cups now', why:'Need ' + waterNeeded + ' oz more · heart failure hydration critical', urgent:true, color:'var(--bl)'});
+  }
+
+  // Carb warning
+  if(carb > 100){
+    suggestions.push({ico:'🚫', title:'Avoid carbs next meal', why:'Already at ' + carb + 'g today · keep next meal protein + vegetables only', urgent:true, color:'var(--re)'});
+  }
+
+  // Time-based
+  if(h >= 14 && h < 17 && prot < 100){
+    suggestions.push({ico:'🥜', title:'Almonds + Protein Shake', why:'Quick 30g protein hit · 300 cal · healthy fats for your heart', urgent:false, color:'var(--gold)'});
+  }
+  if(h >= 20 && prot < 140){
+    suggestions.push({ico:'🐟', title:'Tuna or Salmon', why:'High protein · low carb · omega-3 for heart health · great bedtime protein', urgent:false, color:'var(--gr)'});
+  }
+
+  // All good
+  if(suggestions.length === 0){
+    var el = document.createElement('div');
+    el.style.cssText = 'padding:12px;background:rgba(76,175,125,0.1);border:1px solid rgba(76,175,125,0.25);border-radius:10px;font-size:14px;color:var(--gr);text-align:center;font-weight:700';
+    el.textContent = '✅ Nutrition on track! Keep executing Terry. Army strong.';
+    cont.appendChild(el);
+    return;
+  }
+
+  for(var i=0;i<suggestions.length;i++){
+    (function(s){
+      var d = document.createElement('div');
+      d.style.cssText = 'display:flex;align-items:flex-start;gap:10px;padding:11px 12px;background:rgba(0,0,0,0.3);border-radius:10px;border-left:3px solid ' + s.color + (s.urgent?';border:1px solid ' + s.color.replace('var(--','rgba(').replace(')','0.3)'):'');
+      d.innerHTML = '<div style="font-size:24px;flex-shrink:0">' + s.ico + '</div>' +
+        '<div><div style="font-size:14px;font-weight:700;color:var(--tx);margin-bottom:2px">' + s.title + '</div>' +
+        '<div style="font-size:12px;color:var(--tx3);line-height:1.5">' + s.why + '</div></div>' +
+        (s.urgent ? '<div style="font-family:Barlow Condensed,sans-serif;font-size:11px;font-weight:800;letter-spacing:1px;color:' + s.color + ';flex-shrink:0;margin-top:2px">NOW</div>' : '');
+      cont.appendChild(d);
+    })(suggestions[i]);
+  }
 }
 
 window.onload=function(){
