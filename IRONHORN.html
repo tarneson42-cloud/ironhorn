@@ -772,7 +772,10 @@ var DN=[
 function g(id){return document.getElementById(id)}
 function ce(t){return document.createElement(t)}
 function ldS(){try{return JSON.parse(localStorage.getItem('ih_'+TODAY)||'{}')}catch(e){return {}}}
-function svS(){try{localStorage.setItem('ih_'+TODAY,JSON.stringify(ST))}catch(e){}}
+function svS(){
+  try{localStorage.setItem('ih_'+TODAY,JSON.stringify(ST))}catch(e){}
+  gsSave();
+}
 function gF(){try{return JSON.parse(localStorage.getItem('ih_f')||'{}')}catch(e){return {}}}
 function bF(id){try{var f=gF();f[id]=(f[id]||0)+1;localStorage.setItem('ih_f',JSON.stringify(f))}catch(e){}}
 function gC(){try{var s=JSON.parse(localStorage.getItem('ih_c')||'null');if(s)return s;}catch(e){}return DCM.map(function(c,i){return{dir:c.dir,time:c.time,text:c.text,id:'c'+i,likes:0,liked:false}})}
@@ -1191,6 +1194,36 @@ function sendCM(txt,isAuto){
   var msgs=isAuto?[{role:'user',content:txt}]:cHist.slice(-10);
   fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:400,system:bCtx(),messages:msgs})}).then(function(r){return r.json()}).then(function(data){hideDots();var reply='Connection issue — keep going Terry! Hook Em!';if(data.content&&data.content.length>0&&data.content[0].text)reply=data.content[0].text;addM('c',reply);if(!isAuto)cHist.push({role:'assistant',content:reply})}).catch(function(){hideDots();addM('c','Connection issue — your mission does not pause. Keep executing. Hook Em!')})
 }
+function saveGSURL(){
+  var inp = document.getElementById('gs-url-input');
+  if(!inp||!inp.value.trim()){toast('Paste your Google Script URL first');return}
+  gsSetURL(inp.value.trim());
+  var st = document.getElementById('gs-status');
+  if(st) st.textContent = 'Connected: '+inp.value.trim().substring(0,40)+'...';
+}
+
+function showWeeklyReport(){
+  var rep = document.getElementById('gs-report');
+  if(!rep) return;
+  if(!GS_ENABLED){rep.style.display='block';rep.innerHTML='Connect Google Sheets first to see reports.';return}
+  rep.style.display='block';rep.innerHTML='Loading weekly report...';
+  gsGetReport('week', function(d){
+    if(!d||!d.ok){rep.innerHTML='No data yet. Log your vitals and meals for a few days first.';return}
+    rep.innerHTML = '<strong style="color:var(--gold)">Weekly Report</strong><br>' + d.report;
+  });
+}
+
+function showMonthlyReport(){
+  var rep = document.getElementById('gs-report');
+  if(!rep) return;
+  if(!GS_ENABLED){rep.style.display='block';rep.innerHTML='Connect Google Sheets first to see reports.';return}
+  rep.style.display='block';rep.innerHTML='Loading monthly report...';
+  gsGetReport('month', function(d){
+    if(!d||!d.ok){rep.innerHTML='No data yet. Log your vitals and meals for a few weeks first.';return}
+    rep.innerHTML = '<strong style="color:var(--gold)">Monthly Report</strong><br>' + d.report;
+  });
+}
+
 function rPA(){rEC();rSym();rRefills();
   var db=g('pad');if(db)db.textContent=new Date().toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
   var qa=g('qag');if(qa){qa.innerHTML='';for(var i=0;i<QA.length;i++){(function(a){var b=ce('button');b.className='qab';b.innerHTML='<div class="qai">'+a.ico+'</div><div class="qal">'+a.lbl+'</div>';b.onclick=a.fn;qa.appendChild(b)})(QA[i])}}
@@ -1880,7 +1913,56 @@ function adjRef(idx,delta){
   else toast(refs[idx].nm+': '+refs[idx].supply+' days');
 }
 
+// ── GOOGLE SHEETS SYNC ─────────────────────
+var GS_URL = '';
+var GS_ON  = false;
+
+function gsLoadURL(){
+  try{var u=localStorage.getItem('ih_gs_url');if(u&&u.length>10){GS_URL=u;GS_ON=true}}catch(e){}
+}
+
+function gsSetURL(url){
+  GS_URL=url;GS_ON=!!url;
+  try{localStorage.setItem('ih_gs_url',url)}catch(e){}
+  var st=document.getElementById('gs-status');
+  if(st)st.textContent=GS_ON?'Connected':'Not connected';
+  toast(GS_ON?'Google Sheets connected!':'URL cleared');
+}
+
+function gsSave(){
+  if(!GS_ON||!GS_URL||GS_URL.length<10)return;
+  try{
+    var bp=(ST['v-bp']||'').split('/');
+    var payload={
+      action:'log',date:TODAY,
+      weight:ST['v-wt']||'',bp_sys:bp[0]||'',bp_dia:bp[1]||'',
+      heart_rate:ST['v-hr']||'',glucose:ST['v-bs']||'',
+      spo2:ST['v-spo2']||'',temp:ST['v-tmp']||'',oura_sleep:ST['v-osl']||'',
+      calories:ST.tCal||0,protein:ST.tPr||0,carbs:ST.tCb||0,fat:ST.tFat||0,
+      water_oz:wC*8,cal_burned:ST.actCal||0,ex_minutes:ST.actMin||0,
+      stand_hours:ST.actStand||0,myair_score:ST['ma-tot']||'',
+      myair_hours:ST['ma-hours']||'',myair_ahi:ST['ma-ahi']||'',myair_seal:ST['ma-seal']||''
+    };
+    fetch(GS_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+      .then(function(r){return r.json()})
+      .then(function(d){if(d&&d.ok)console.log('GS saved '+d.date)})
+      .catch(function(e){console.log('GS save failed')});
+  }catch(ex){console.log('GS error',ex)}
+}
+
+function gsReport(period,callback){
+  if(!GS_ON||!GS_URL){callback(null);return}
+  try{
+    fetch(GS_URL+'?action=report&period='+period)
+      .then(function(r){return r.json()})
+      .then(function(d){callback(d)})
+      .catch(function(){callback(null)});
+  }catch(e){callback(null)}
+}
+
+
 window.onload=function(){
+  gsLoadURL();
   setupN();startECG();tick();setInterval(tick,30000);updS();
   var ld=g('ld');setTimeout(function(){ld.classList.add('hide');setTimeout(function(){if(ld.parentNode)ld.parentNode.removeChild(ld)},900)},4200);
 };
