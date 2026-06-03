@@ -1954,21 +1954,36 @@ function gsSave(){
   if(!GS_ON||!GS_URL||GS_URL.length<10)return;
   try{
     var bp=(ST['v-bp']||'').split('/');
-    var payload={
-      action:'log',date:TODAY,
-      weight:ST['v-wt']||'',bp_sys:bp[0]||'',bp_dia:bp[1]||'',
-      heart_rate:ST['v-hr']||'',glucose:ST['v-bs']||'',
-      spo2:ST['v-spo2']||'',temp:ST['v-tmp']||'',oura_sleep:ST['v-osl']||'',
-      calories:ST.tCal||0,protein:ST.tPr||0,carbs:ST.tCb||0,fat:ST.tFat||0,
-      water_oz:wC*8,cal_burned:ST.actCal||0,ex_minutes:ST.actMin||0,
-      stand_hours:ST.actStand||0,myair_score:ST['ma-tot']||'',
-      myair_hours:ST['ma-hours']||'',myair_ahi:ST['ma-ahi']||'',myair_seal:ST['ma-seal']||''
-    };
-    fetch(GS_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-      .then(function(r){return r.json()})
-      .then(function(d){if(d&&d.ok)console.log('GS saved '+d.date)})
-      .catch(function(e){console.log('GS save failed')});
-  }catch(ex){console.log('GS error',ex)}
+    var params=[
+      'action=log',
+      'date='+encodeURIComponent(TODAY),
+      'weight='+encodeURIComponent(ST['v-wt']||''),
+      'bp_sys='+encodeURIComponent(bp[0]||''),
+      'bp_dia='+encodeURIComponent(bp[1]||''),
+      'heart_rate='+encodeURIComponent(ST['v-hr']||''),
+      'glucose='+encodeURIComponent(ST['v-bs']||''),
+      'spo2='+encodeURIComponent(ST['v-spo2']||''),
+      'temp='+encodeURIComponent(ST['v-tmp']||''),
+      'oura_sleep='+encodeURIComponent(ST['v-osl']||''),
+      'calories='+encodeURIComponent(ST.tCal||0),
+      'protein='+encodeURIComponent(ST.tPr||0),
+      'carbs='+encodeURIComponent(ST.tCb||0),
+      'fat='+encodeURIComponent(ST.tFat||0),
+      'water_oz='+encodeURIComponent(wC*8),
+      'cal_burned='+encodeURIComponent(ST.actCal||0),
+      'ex_minutes='+encodeURIComponent(ST.actMin||0),
+      'stand_hours='+encodeURIComponent(ST.actStand||0),
+      'myair_score='+encodeURIComponent(ST['ma-tot']||''),
+      'myair_ahi='+encodeURIComponent(ST['ma-ahi']||'')
+    ];
+    var fullUrl = GS_URL + '?' + params.join('&');
+    // Use no-cors fetch - fires and forgets, no response needed
+    fetch(fullUrl, {method:'GET', mode:'no-cors'})
+      .catch(function(){});
+    // Also try image ping as backup
+    var img = new Image();
+    img.src = fullUrl;
+  }catch(ex){}
 }
 
 function gsReport(period,callback){
