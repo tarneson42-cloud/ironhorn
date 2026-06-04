@@ -644,6 +644,8 @@ var C28=[
 {d:25,ex:'Push-ups 5x15, Squats 4x18, Plank 55s'},{d:26,ex:'Push-ups 5x15, Lunges 3x15, Plank 55s'},{d:27,ex:'Incline PU 3x20, Squats 4x20, MC 60s'},{d:28,ch:true}
 ];
 var DR=[
+{id:'sarah',nm:'Dr. Sarah Mitchell',role:'Chief Nutrition Officer',ico:'👩‍⚕️',color:'#e91e8c',
+ prompt:'You are Dr. Sarah Mitchell, Chief Nutrition Officer. You push Terry exactly like his wife Vic does — with love but zero tolerance for excuses. You know his goals: 25 lbs in 50 days, 1700-1900 cal, 160-180g protein, carbs under 45g per meal, sodium under 2000mg, water 110 oz. Call him out when off track. Celebrate hard when winning. Sign off as Dr. Sarah CNO.'},
 {id:'claude',nm:'Claude',role:'Chief Intelligence Officer',ico:'🤖',color:'#BF5700',
  prompt:'You are Claude, Chief Intelligence Officer on Terry Arneson board of directors. Give a comprehensive executive briefing on his health mission today. Reference his specific numbers. Be direct, warm, Army strong. Sign off as Claude CIO.'},
 {id:'apple',nm:'Apple Health',role:'Chief Medical Officer',ico:'🍎',color:'#FF3B30',
@@ -1458,7 +1460,29 @@ function getDirReport(dir) {
   var greeting = new Date().getHours() < 12 ? 'Good morning' : new Date().getHours() < 17 ? 'Good afternoon' : 'Good evening';
   var report   = '';
 
-  if (dir.id === 'claude') {
+  if (dir.id === 'sarah') {
+    var cal=ST.tCal||0;var prot=ST.tPr||0;var carb=ST.tCb||0;var waterOz=wC*8;
+    var wt=parseFloat(ST['v-wt'])||211;var lost=(211-wt).toFixed(1);
+    var h=new Date().getHours();
+    var gr=h<12?'Good morning':'Good afternoon';
+    var wins=[];var fires=[];
+    if(cal>=1700&&cal<=1900)wins.push('calories on target at '+cal);
+    else if(cal>1900)fires.push('calories over at '+cal+' — cut back now');
+    else if(cal>0)fires.push('only '+cal+' calories — eat more protein now');
+    if(prot>=160)wins.push(prot+'g protein — excellent');
+    else if(prot>0)fires.push('protein at '+prot+'g — need '+(160-prot)+'g more today');
+    if(carb<=135)wins.push('carbs controlled at '+carb+'g');
+    else fires.push('carbs at '+carb+'g — next meal protein and vegetables only');
+    if(waterOz>=96)wins.push(waterOz+' oz water — heart thanks you');
+    else fires.push('only '+waterOz+' oz water — drink two cups right now');
+    if(fires.length===0){
+      report=gr+' Terry. '+wins.join('. ')+'. This is what a man on a mission looks like. '+lost+' lbs down. Vic is proud. — Dr. Sarah CNO';
+    }else if(wins.length>=fires.length){
+      report=gr+' Terry. Wins: '+wins.join(', ')+'. Now hear me: '+fires.join('. ')+'. You are close but close does not win this mission. Fix it now. — Dr. Sarah CNO';
+    }else{
+      report=gr+' Terry. Straight talk because that is what Vic would do. '+fires.join('. ')+'. This is a decision you can change right now. '+(h<20?(20-h)+' hours left today.':'Tonight reset and come back strong.')+' — Dr. Sarah CNO';
+    }
+  } else if (dir.id === 'claude') {
     var wins = [];
     if (biked)          wins.push('bike ride complete');
     if (medsDone >= 8)  wins.push(medsDone + ' of 10 meds taken');
@@ -1631,7 +1655,7 @@ function adjRef(idx,delta){
   else toast(refs[idx].nm+': '+refs[idx].supply+' days');
 }
 
-var GS_URL='https://script.google.com/macros/s/AKfycbx9klUA3oiOMgwY_rAGM4GqR0lOLH4xCdb6gHAKJNRWARbzR1tGcWmYU60b8dAUQeFK/exec';
+var GS_URL='https://script.google.com/macros/s/AKfycbxPaHMXePXiWvDLTz3uofgNbDQ9UwawsrclNfYzl_7fy4-_IqqxfwgDbMxmNs4sFRpb/exec';
 var GS_ON=true;
 function gsLoadURL(){try{var u=localStorage.getItem('ih_gs_url');if(u&&u.length>10)GS_URL=u}catch(e){}}
 function gsSave(){
@@ -1716,7 +1740,7 @@ function rActLog(){
 }
 
 // ── GOOGLE SHEETS SYNC ─────────────────────
-var GS_URL='https://script.google.com/macros/s/AKfycbx9klUA3oiOMgwY_rAGM4GqR0lOLH4xCdb6gHAKJNRWARbzR1tGcWmYU60b8dAUQeFK/exec';
+var GS_URL='https://script.google.com/macros/s/AKfycbxPaHMXePXiWvDLTz3uofgNbDQ9UwawsrclNfYzl_7fy4-_IqqxfwgDbMxmNs4sFRpb/exec';
 var GS_ON=true;
 function gsLoadURL(){try{var u=localStorage.getItem('ih_gs_url');if(u&&u.length>10)GS_URL=u}catch(e){}}
 function gsSave(){
