@@ -390,52 +390,6 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:Barlow,sans-serif;b
 <div class="sec" style="margin-bottom:8px">Vital Signs</div>
 <div class="vg" id="vg"></div>
 
-<div class="sec" style="margin-bottom:8px">🔥 Activity</div>
-<div style="margin:0 18px 14px;background:rgba(50,32,18,0.95);border:1px solid var(--b2);border-radius:16px;overflow:hidden">
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-bottom:1px solid var(--b1)">
-    <div style="padding:12px 10px;text-align:center;border-right:1px solid var(--b1)">
-      <div style="font-size:18px;margin-bottom:4px">🔥</div>
-      <div style="font-size:10px;color:var(--o3);font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">Cal Burned</div>
-      <input id="act-cal" type="number" placeholder="0" style="width:100%;background:rgba(191,87,0,0.1);border:1px solid rgba(191,87,0,0.25);border-radius:8px;color:var(--o3);font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;outline:none;text-align:center;padding:6px 4px">
-    </div>
-    <div style="padding:12px 10px;text-align:center;border-right:1px solid var(--b1)">
-      <div style="font-size:18px;margin-bottom:4px">⏱️</div>
-      <div style="font-size:10px;color:var(--gr);font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">Ex Minutes</div>
-      <input id="act-min" type="number" placeholder="0" style="width:100%;background:rgba(76,175,125,0.1);border:1px solid rgba(76,175,125,0.25);border-radius:8px;color:var(--gr);font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;outline:none;text-align:center;padding:6px 4px">
-    </div>
-    <div style="padding:12px 10px;text-align:center">
-      <div style="font-size:18px;margin-bottom:4px">🧍</div>
-      <div style="font-size:10px;color:var(--bl);font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">Stand Hrs</div>
-      <input id="act-stand" type="number" placeholder="0" max="24" style="width:100%;background:rgba(74,144,217,0.1);border:1px solid rgba(74,144,217,0.25);border-radius:8px;color:var(--bl);font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;outline:none;text-align:center;padding:6px 4px">
-    </div>
-  </div>
-  <div style="padding:10px 13px;border-bottom:1px solid var(--b1)">
-    <div style="font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--tx3);margin-bottom:7px">Activity Type</div>
-    <div style="display:flex;flex-wrap:wrap;gap:6px" id="act-type-btns"></div>
-  </div>
-  <div style="padding:10px 13px">
-    <input id="act-notes" type="text" placeholder="Notes e.g. Morning bike — felt strong" style="width:100%;background:rgba(255,255,255,0.07);border:1px solid var(--b1);border-radius:9px;color:var(--tx);font-family:Barlow,sans-serif;font-size:14px;padding:9px 12px;outline:none;margin-bottom:9px">
-    <button onclick="logActivity()" style="width:100%;padding:11px;background:linear-gradient(135deg,var(--o),var(--o2));border:none;border-radius:10px;color:white;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;letter-spacing:1px;cursor:pointer">🔥 LOG ACTIVITY</button>
-  </div>
-  <div style="border-top:1px solid var(--b1);display:grid;grid-template-columns:1fr 1fr 1fr">
-    <div style="padding:10px;text-align:center;border-right:1px solid var(--b1)">
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--o3)" id="act-total-cal">0</div>
-      <div style="font-size:10px;color:var(--tx3);text-transform:uppercase;letter-spacing:0.5px">Cal Burned</div>
-    </div>
-    <div style="padding:10px;text-align:center;border-right:1px solid var(--b1)">
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--gr)" id="act-total-min">0</div>
-      <div style="font-size:10px;color:var(--tx3);text-transform:uppercase;letter-spacing:0.5px">Ex Min</div>
-    </div>
-    <div style="padding:10px;text-align:center">
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--bl)" id="act-total-stand">0</div>
-      <div style="font-size:10px;color:var(--tx3);text-transform:uppercase;letter-spacing:0.5px">Stand Hrs</div>
-    </div>
-  </div>
-  <div id="act-log-list" style="padding:0 13px 10px"></div>
-</div>
-
-
-
 <div class="sec" style="margin-bottom:8px">Water</div>
 <div style="padding:0 18px;margin-bottom:12px">
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
@@ -446,64 +400,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:Barlow,sans-serif;b
 </div>
 
 <div class="sec" style="margin-bottom:8px">Nutrition Today</div>
-<div style="margin:0 18px 14px;background:rgba(50,32,18,0.95);border:1px solid var(--b1);border-radius:16px;overflow:hidden">
-
-  <!-- Donut chart + legend -->
-  <div style="padding:16px 14px;display:flex;align-items:center;gap:16px">
-    <!-- Donut -->
-    <div style="position:relative;flex-shrink:0">
-      <canvas id="macro-donut" width="130" height="130"></canvas>
-      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--tx);line-height:1" id="donut-cal">0</div>
-        <div style="font-size:10px;color:var(--tx3);font-weight:700;text-transform:uppercase;letter-spacing:0.5px">cal</div>
-        <div style="font-size:10px;color:var(--tx3)">/ 1800</div>
-      </div>
-    </div>
-    <!-- Macro breakdown -->
-    <div style="flex:1;display:flex;flex-direction:column;gap:10px">
-      <div>
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
-          <div style="display:flex;align-items:center;gap:6px"><div style="width:10px;height:10px;border-radius:2px;background:#4CAF7D;flex-shrink:0"></div><div style="font-size:13px;color:var(--tx2);font-weight:600">Protein</div></div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:900;color:#4CAF7D"><span id="d-prot">0</span>g</div>
-        </div>
-        <div style="height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden"><div id="d-prot-bar" style="height:100%;background:#4CAF7D;border-radius:2px;width:0%;transition:width 0.5s"></div></div>
-        <div style="font-size:10px;color:var(--tx3);margin-top:2px">Goal: 170g · <span id="d-prot-pct">0</span>%</div>
-      </div>
-      <div>
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
-          <div style="display:flex;align-items:center;gap:6px"><div style="width:10px;height:10px;border-radius:2px;background:#5BA3E0;flex-shrink:0"></div><div style="font-size:13px;color:var(--tx2);font-weight:600">Carbs</div></div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:900;color:#5BA3E0"><span id="d-carb">0</span>g</div>
-        </div>
-        <div style="height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden"><div id="d-carb-bar" style="height:100%;background:#5BA3E0;border-radius:2px;width:0%;transition:width 0.5s"></div></div>
-        <div style="font-size:10px;color:var(--tx3);margin-top:2px">Goal: 150g · <span id="d-carb-pct">0</span>%</div>
-      </div>
-      <div>
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
-          <div style="display:flex;align-items:center;gap:6px"><div style="width:10px;height:10px;border-radius:2px;background:#e0a050;flex-shrink:0"></div><div style="font-size:13px;color:var(--tx2);font-weight:600">Fat</div></div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:900;color:#e0a050"><span id="d-fat">0</span>g</div>
-        </div>
-        <div style="height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden"><div id="d-fat-bar" style="height:100%;background:#e0a050;border-radius:2px;width:0%;transition:width 0.5s"></div></div>
-        <div style="font-size:10px;color:var(--tx3);margin-top:2px">Goal: 60g · <span id="d-fat-pct">0</span>%</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Bottom stats row -->
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--b1)">
-    <div style="padding:10px;text-align:center;border-right:1px solid var(--b1)">
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:var(--o3)" id="d-cal-tot">0</div>
-      <div style="font-size:10px;color:var(--tx3);text-transform:uppercase;letter-spacing:0.5px">Cal In</div>
-    </div>
-    <div style="padding:10px;text-align:center;border-right:1px solid var(--b1)">
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:var(--gr)" id="d-cal-rem">1800</div>
-      <div style="font-size:10px;color:var(--tx3);text-transform:uppercase;letter-spacing:0.5px">Remaining</div>
-    </div>
-    <div style="padding:10px;text-align:center">
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:var(--bl)" id="d-water-tot">0</div>
-      <div style="font-size:10px;color:var(--tx3);text-transform:uppercase;letter-spacing:0.5px">oz Water</div>
-    </div>
-  </div>
-</div>
+<div class="nr" id="nrr"></div>
 
 <div class="sec" style="margin-bottom:8px">Food Tracker</div>
 <div style="margin:0 18px 14px;background:rgba(50,32,18,0.95);border:1px solid var(--b2);border-radius:16px;overflow:hidden">
@@ -567,20 +464,9 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:Barlow,sans-serif;b
 </div>
 
 <div class="sec" style="margin-bottom:8px">Medications</div>
-<div style="margin:0 18px 10px;padding:11px 13px;background:rgba(229,57,53,0.1);border:1px solid rgba(229,57,53,0.3);border-radius:12px;display:flex;align-items:center;gap:10px">
-  <div style="font-size:22px">⚠️</div>
-  <div><div style="font-size:15px;font-weight:800;color:var(--re)">Farxiga Out of Stock</div>
-  <div style="font-size:13px;color:var(--tx2);margin-top:2px;line-height:1.5">Expected Monday. Watch weight daily. 2+ lbs gain means call doctor. Keep sodium under 1500mg.</div></div>
-</div>
-<div style="margin:0 18px 10px;padding:11px 13px;background:rgba(229,57,53,0.1);border:1px solid rgba(229,57,53,0.3);border-radius:12px;display:flex;align-items:center;gap:10px">
-  <div style="font-size:22px">⚠️</div>
-  <div>
-    <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--re);letter-spacing:0.5px">Farxiga Out of Stock</div>
-    <div style="font-size:13px;color:var(--tx2);margin-top:2px;line-height:1.5">Expected Monday. Watch weight daily — gain of 2+ lbs means call doctor. Watch ankles for swelling. Keep sodium under 1500mg until back on it.</div>
-  </div>
-</div>
-<div class="mwp" id="mwp"></div>
 
+</div>
+<div class="mwp" id="mwp">
 </div>
 <div class="scr" id="scr-board"><div class="sb"><div class="sbt">🏛️ Board</div><div class="sbr"><div class="bdg bo">9 Directors</div></div></div><div style="height:8px"></div><div class="bch"><div class="bcav">🤖</div><div class="bcn">Claude</div><div class="bcr">Chief Intelligence Officer</div></div><div class="cot" id="cot"></div><div class="chw"><div class="chm" id="chm"><div class="msc"><div class="msca">🤖</div><div class="mscb">Hook Em Terry! Army veteran. ND farm boy. NDSU Bison. Texas Longhorn. Vic's husband. Em's dad. Paisley, Paxtyn, and baby Blaire's Grandpa. All of that is in this fight. Your dad Alvin left at 55 — you will not. I am with you. Let's win this. 🧡</div></div></div><div class="cir"><input class="cin" id="chti" placeholder="Ask your coach..." onkeydown="if(event.key==='Enter')sendChat()"><button class="csd" onclick="sendChat()">↑</button></div></div><div class="sec" style="margin-bottom:8px">The Board</div><div class="drl" id="drl"></div><div class="sec" style="margin-bottom:8px">Terry's Roots</div><div class="idw"><div class="idwg"><div class="idc"><div class="idci">⚔️</div><div class="idcn" style="color:#7ab84e">U.S. Army</div><div class="idcd">Served with honor. Warrior mindset every day.</div><span class="idct" style="color:#7ab84e;border-color:rgba(91,138,60,0.4);background:rgba(91,138,60,0.08)">Veteran</span></div><div class="idc"><div class="idci">🇺🇸</div><div class="idcn" style="color:#e07070">American</div><div class="idcd">Patriot. Freedom worth fighting for — including your health.</div><span class="idct" style="color:#e07070;border-color:rgba(220,80,80,0.35);background:rgba(220,80,80,0.07)">Patriot</span></div><div class="idc"><div class="idci">🌾</div><div class="idcn" style="color:#e8c97a">North Dakota</div><div class="idcd">Stanley farm boy. Lostwood. Midstream Mafia. Built tough.</div><span class="idct" style="color:#e8c97a;border-color:rgba(232,201,122,0.35);background:rgba(232,201,122,0.06)">Farm Strong</span></div><div class="idc"><div class="idci">🦬</div><div class="idcn" style="color:var(--gold)">NDSU Bison</div><div class="idcd">8 national championships. Champions grind every day.</div><span class="idct" style="color:var(--gold);border-color:rgba(240,180,41,0.4);background:rgba(240,180,41,0.07)">Go Bison</span></div>
     </div></div>
@@ -629,26 +515,22 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:Barlow,sans-serif;b
   </div>
   <button onclick="window.location.href='cronometer://'" style="width:100%;margin-top:11px;padding:11px;background:linear-gradient(135deg,#F0A500,#D96A0A);border:none;border-radius:11px;color:white;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer">🥗 OPEN CRONOMETER</button>
 </div>
-<div class="sec" style="margin-top:10px;margin-bottom:8px">🩺 Omron BP7900 <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#7ab84e;font-weight:700">Arrives June 4</span></div><div class="omc"><div class="omh"><div class="omi">🩺</div><div><div class="omn">Omron BP7900</div><div class="oms">Smart BP · AFib Detection · Bluetooth</div></div></div><div class="omf"><div class="omff"><div class="omfl">SYSTOLIC</div><div class="omfv" id="oms">—</div><input class="omfi" type="number" id="omsi" placeholder="128" onchange="logOm()"></div><div class="omff"><div class="omfl">DIASTOLIC</div><div class="omfv" id="omd">—</div><input class="omfi" type="number" id="omdi" placeholder="82" onchange="logOm()"></div><div class="omff"><div class="omfl">PULSE</div><div class="omfv" id="omh">—</div><input class="omfi" type="number" id="omhi" placeholder="68" onchange="logOm()"></div><div class="omff"><div class="omfl">AFIB</div><select id="omaf" style="width:100%;background:none;border:none;color:var(--tx2);font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;outline:none;text-align:center" onchange="logOm()"><option value="none">None</option><option value="det">Detected</option><option value="irr">Irregular</option></select></div></div><div class="omnt">After June 4: Open Omron Connect app, take reading, log here. AFib detection is critical with your PVCs.</div></div><div class="sec" style="margin-top:10px;margin-bottom:8px">📱 Screen Time</div><div class="stc"><div class="str"><div style="font-size:21px">📱</div><div style="flex:1"><div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:900;color:var(--tx)">iPhone Screen Time</div><div style="font-size:11px;color:var(--tx3);margin-top:1px">Settings → Screen Time → See All</div></div><div style="text-align:right"><div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;color:var(--o3)" id="std">—</div><div style="font-size:9px;color:var(--tx3);font-family:'JetBrains Mono',monospace">hrs today</div></div></div><div class="stf"><div class="stff"><div class="stfl">TOTAL HRS</div><input class="stfi" type="number" step="0.1" id="stt" placeholder="4.5" onchange="logST()"></div><div class="stff"><div class="stfl">IRONHORN</div><input class="stfi" type="number" step="0.1" id="sti" placeholder="1.2" style="color:#7ab84e" onchange="logST()"></div><div class="stff"><div class="stfl">FIRST OPEN</div><input class="stfi" type="time" id="stf" style="font-size:12px" onchange="logST()"></div></div><div class="stbr"><div class="stbf" id="stbf" style="width:0%"></div></div><div class="stn" id="stn">Log from Settings - Screen Time</div></div><div class="sec" style="margin-bottom:8px">☁️ Google Sheets Sync</div>
+<div class="sec" style="margin-top:10px;margin-bottom:8px">🩺 Omron BP7900 <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#7ab84e;font-weight:700">Arrives June 4</span></div><div class="omc"><div class="omh"><div class="omi">🩺</div><div><div class="omn">Omron BP7900</div><div class="oms">Smart BP · AFib Detection · Bluetooth</div></div></div><div class="omf"><div class="omff"><div class="omfl">SYSTOLIC</div><div class="omfv" id="oms">—</div><input class="omfi" type="number" id="omsi" placeholder="128" onchange="logOm()"></div><div class="omff"><div class="omfl">DIASTOLIC</div><div class="omfv" id="omd">—</div><input class="omfi" type="number" id="omdi" placeholder="82" onchange="logOm()"></div><div class="omff"><div class="omfl">PULSE</div><div class="omfv" id="omh">—</div><input class="omfi" type="number" id="omhi" placeholder="68" onchange="logOm()"></div><div class="omff"><div class="omfl">AFIB</div><select id="omaf" style="width:100%;background:none;border:none;color:var(--tx2);font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;outline:none;text-align:center" onchange="logOm()"><option value="none">None</option><option value="det">Detected</option><option value="irr">Irregular</option></select></div></div><div class="omnt">After June 4: Open Omron Connect app, take reading, log here. AFib detection is critical with your PVCs.</div></div><div class="sec" style="margin-top:10px;margin-bottom:8px">📱 Screen Time</div><div class="stc"><div class="str"><div style="font-size:21px">📱</div><div style="flex:1"><div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:900;color:var(--tx)">iPhone Screen Time</div><div style="font-size:11px;color:var(--tx3);margin-top:1px">Settings → Screen Time → See All</div></div><div style="text-align:right"><div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;color:var(--o3)" id="std">—</div><div style="font-size:9px;color:var(--tx3);font-family:'JetBrains Mono',monospace">hrs today</div></div></div><div class="stf"><div class="stff"><div class="stfl">TOTAL HRS</div><input class="stfi" type="number" step="0.1" id="stt" placeholder="4.5" onchange="logST()"></div><div class="stff"><div class="stfl">IRONHORN</div><input class="stfi" type="number" step="0.1" id="sti" placeholder="1.2" style="color:#7ab84e" onchange="logST()"></div><div class="stff"><div class="stfl">FIRST OPEN</div><input class="stfi" type="time" id="stf" style="font-size:12px" onchange="logST()"></div></div><div class="stbr"><div class="stbf" id="stbf" style="width:0%"></div></div><div class="stn" id="stn">Log from Settings - Screen Time</div></div><div class="sec" style="margin-bottom:8px">☁️ Google Sheets</div>
 <div style="margin:0 18px 14px;background:rgba(50,32,18,0.95);border:1px solid var(--b2);border-radius:16px;overflow:hidden">
-  <div style="padding:13px 14px;border-bottom:1px solid var(--b1)">
-    <div style="font-size:14px;color:var(--tx2);line-height:1.6;margin-bottom:10px">Permanent data storage. Every log saves to Google Sheets automatically. Weekly and monthly reports pull from your data.</div>
-    <div style="font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--tx3);margin-bottom:6px">Google Script URL</div>
+  <div style="padding:12px 14px;border-bottom:1px solid var(--b1)">
     <div style="display:flex;gap:8px">
-      <input id="gs-url-input" type="text" placeholder="Paste your script.google.com URL here" style="flex:1;background:rgba(255,255,255,0.08);border:1px solid var(--b1);border-radius:9px;color:var(--tx);font-family:Barlow,sans-serif;font-size:13px;padding:9px 12px;outline:none">
+      <input id="gs-url-input" type="text" placeholder="Paste script.google.com URL" style="flex:1;background:rgba(255,255,255,0.08);border:1px solid var(--b1);border-radius:9px;color:var(--tx);font-family:Barlow,sans-serif;font-size:12px;padding:9px 12px;outline:none">
       <button onclick="saveGSURL()" style="padding:9px 14px;background:linear-gradient(135deg,var(--o),var(--o2));border:none;border-radius:9px;color:white;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;cursor:pointer">Save</button>
     </div>
-    <div style="font-size:11px;color:var(--gr);margin-top:8px" id="gs-status">Connected to Google Sheets</div>
+    <div style="font-size:11px;color:var(--gr);margin-top:7px" id="gs-status">Connected to Google Sheets</div>
   </div>
-  <div style="padding:13px 14px;border-bottom:1px solid var(--b1)">
-    <div style="display:flex;gap:8px">
-      <button onclick="showWeeklyReport()" style="flex:1;padding:10px;background:rgba(191,87,0,0.15);border:1px solid rgba(191,87,0,0.3);border-radius:9px;color:var(--o3);font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;cursor:pointer">📊 This Week</button>
-      <button onclick="showMonthlyReport()" style="flex:1;padding:10px;background:rgba(191,87,0,0.15);border:1px solid rgba(191,87,0,0.3);border-radius:9px;color:var(--o3);font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;cursor:pointer">📈 This Month</button>
-    </div>
-    <div id="gs-report" style="display:none;margin-top:10px;padding:11px;background:rgba(0,0,0,0.3);border-radius:9px;font-size:13px;color:var(--tx2);line-height:1.7"></div>
+  <div style="padding:11px 14px;display:flex;gap:8px">
+    <button onclick="showWeeklyReport()" style="flex:1;padding:10px;background:rgba(191,87,0,0.15);border:1px solid rgba(191,87,0,0.3);border-radius:9px;color:var(--o3);font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;cursor:pointer">📊 This Week</button>
+    <button onclick="showMonthlyReport()" style="flex:1;padding:10px;background:rgba(191,87,0,0.15);border:1px solid rgba(191,87,0,0.3);border-radius:9px;color:var(--o3);font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;cursor:pointer">📈 This Month</button>
   </div>
+  <div id="gs-report" style="display:none;margin:0 13px 13px;padding:11px;background:rgba(0,0,0,0.3);border-radius:9px;font-size:13px;color:var(--tx2);line-height:1.7"></div>
 </div>
-<div class="sec" style="margin-top:10px;margin-bottom:8px">Testing Notes</div><div class="tnl" id="tnl"></div><textarea class="pai" id="pani" placeholder="Add a testing note or bug..."></textarea><button class="pab" onclick="addNote()">+ Add Note</button><div class="sec" style="margin-top:2px;margin-bottom:8px">App Manager — Ask Claude</div><div class="pac"><div class="pach">Ask me to help manage IRONHORN — add a director, explain a metric, change a goal.</div><div class="pacr"><input class="paci" id="paii" placeholder="How do I sync Apple Health?" onkeydown="if(event.key==='Enter')sendPA()"><button class="pacs" onclick="sendPA()">↑</button></div><div class="pacp" id="pacp"></div></div></div>
+<div class="sec" style="margin-top:2px;margin-bottom:8px">App Manager — Ask Claude</div><div class="pac"><div class="pach">Ask me to help manage IRONHORN — add a director, explain a metric, change a goal.</div><div class="pacr"><input class="paci" id="paii" placeholder="How do I sync Apple Health?" onkeydown="if(event.key==='Enter')sendPA()"><button class="pacs" onclick="sendPA()">↑</button></div><div class="pacp" id="pacp"></div></div></div>
 <div id="nav"><button class="nb on" onclick="goTo('home')" id="nav-home"><div class="ni">🏠</div><div class="nl">Home</div></button><button class="nb" onclick="goTo('schedule')" id="nav-schedule"><div class="ni">📅</div><div class="nl">Schedule</div></button><button class="nb" onclick="goTo('workouts')" id="nav-workouts"><div class="ni">🚴</div><div class="nl">Workout</div></button><button class="nb" onclick="goTo('medical')" id="nav-medical"><div class="ni">🏥</div><div class="nl">Medical</div></button><button class="nb" onclick="goTo('board')" id="nav-board"><div class="ni">🏛️</div><div class="nl">Board</div></button><button class="nb" onclick="goTo('pa')" id="nav-pa"><div class="ni">🤝</div><div class="nl">Assist</div></button></div>
 </div><script>
 var TODAY=new Date().toISOString().split('T')[0];
@@ -710,7 +592,6 @@ var C28=[
 {d:25,ex:'Push-ups 5x15, Squats 4x18, Plank 55s'},{d:26,ex:'Push-ups 5x15, Lunges 3x15, Plank 55s'},{d:27,ex:'Incline PU 3x20, Squats 4x20, MC 60s'},{d:28,ch:true}
 ];
 var DR=[
-{id:"sarah",nm:"Dr. Sarah Mitchell",role:"Chief Nutrition Officer",ico:"👩‍⚕️",color:"#e91e8c"},
 {id:'claude',nm:'Claude',role:'Chief Intelligence Officer',ico:'🤖',color:'#BF5700',
  prompt:'You are Claude, Chief Intelligence Officer on Terry Arneson board of directors. Give a comprehensive executive briefing on his health mission today. Reference his specific numbers. Be direct, warm, Army strong. Sign off as Claude CIO.'},
 {id:'apple',nm:'Apple Health',role:'Chief Medical Officer',ico:'🍎',color:'#FF3B30',
@@ -791,10 +672,7 @@ var DN=[
 function g(id){return document.getElementById(id)}
 function ce(t){return document.createElement(t)}
 function ldS(){try{return JSON.parse(localStorage.getItem('ih_'+TODAY)||'{}')}catch(e){return {}}}
-function svS(){
-  try{localStorage.setItem('ih_'+TODAY,JSON.stringify(ST))}catch(e){}
-  gsSave();
-}
+function svS(){try{localStorage.setItem('ih_'+TODAY,JSON.stringify(ST))}catch(e){}gsSave();}
 function gF(){try{return JSON.parse(localStorage.getItem('ih_f')||'{}')}catch(e){return {}}}
 function bF(id){try{var f=gF();f[id]=(f[id]||0)+1;localStorage.setItem('ih_f',JSON.stringify(f))}catch(e){}}
 function gC(){try{var s=JSON.parse(localStorage.getItem('ih_c')||'null');if(s)return s;}catch(e){}return DCM.map(function(c,i){return{dir:c.dir,time:c.time,text:c.text,id:'c'+i,likes:0,liked:false}})}
@@ -967,7 +845,7 @@ function rC28(){
   })(C28[i])}
 }
 function rFG(){var cont=g('fg');if(!cont)return;cont.innerHTML='';var now=new Date();for(var i=27;i>=0;i--){var d=new Date(now);d.setDate(d.getDate()-i);var key=d.toISOString().split('T')[0];var s={};try{s=JSON.parse(localStorage.getItem('ih_'+key)||'{}')}catch(e){}var n=0;for(var j=0;j<WO.length;j++){if(s['wo-'+WO[j].id])n++}var fd=ce('div');fd.className='fd'+(n>=3?' fd3':n>=2?' fd2':n>=1?' fd1':'');cont.appendChild(fd)}}
-function rMe(){rVt();rNR();rWC();rMA();rMD();rFoodLog();rQF();initActTypes();rActLog();rNutrTable();}
+function rMe(){rVt();rNR();rWC();rMA();rMD();rFoodLog();rQF()}
 function rVt(){
   var cont=g('vg');if(!cont)return;
   cont.innerHTML='';
@@ -1021,72 +899,11 @@ function rVt(){
 }
 
 function rNR(){
-  var cal  = ST.tCal || 0;
-  var prot = ST.tPr  || 0;
-  var carb = ST.tCb  || 0;
-  var fat  = ST.tFat || 0;
-  var water= wC * 8;
-
-  // Update text values
-  var setT = function(id,v){var e=document.getElementById(id);if(e)e.textContent=v};
-  setT('donut-cal',  cal);
-  setT('d-cal-tot',  cal);
-  setT('d-cal-rem',  Math.max(0, 1800-cal));
-  setT('d-water-tot',water);
-  setT('d-prot', prot);
-  setT('d-carb', carb);
-  setT('d-fat',  fat);
-  setT('d-prot-pct', Math.round(prot/170*100));
-  setT('d-carb-pct', Math.round(carb/150*100));
-  setT('d-fat-pct',  Math.round(fat/60*100));
-
-  // Progress bars
-  var setB = function(id,pct,col){
-    var e=document.getElementById(id);
-    if(e){e.style.width=Math.min(100,pct)+'%';if(col)e.style.background=col}
-  };
-  setB('d-prot-bar', Math.round(prot/170*100));
-  setB('d-carb-bar', Math.round(carb/150*100), carb>135?'var(--re)':null);
-  setB('d-fat-bar',  Math.round(fat/60*100));
-
-  // Draw donut
-  var cv = document.getElementById('macro-donut');
-  if(!cv) return;
-  var ctx = cv.getContext('2d');
-  cv.width = 130; cv.height = 130;
-  ctx.clearRect(0,0,130,130);
-
-  var cx=65; var cy=65; var r=52; var lw=14;
-  var total = prot*4 + carb*4 + fat*9;
-  if(total <= 0) total = 1;
-
-  var segments = [
-    {val: prot*4, color:'#4CAF7D'},
-    {val: carb*4, color:'#5BA3E0'},
-    {val: fat*9,  color:'#e0a050'}
-  ];
-
-  // Background ring
-  ctx.beginPath();
-  ctx.arc(cx,cy,r,0,Math.PI*2);
-  ctx.strokeStyle='rgba(255,255,255,0.06)';
-  ctx.lineWidth=lw;
-  ctx.stroke();
-
-  // Segments
-  var startAngle = -Math.PI/2;
-  for(var i=0;i<segments.length;i++){
-    var seg = segments[i];
-    if(seg.val <= 0) continue;
-    var sweep = (seg.val/total)*Math.PI*2;
-    ctx.beginPath();
-    ctx.arc(cx,cy,r,startAngle,startAngle+sweep);
-    ctx.strokeStyle=seg.color;
-    ctx.lineWidth=lw;
-    ctx.lineCap='round';
-    ctx.stroke();
-    startAngle+=sweep;
-  }
+  var cont=g('nrr');if(!cont)return;
+  var mac=[{lbl:'Calories',val:ST.tCal||0,goal:1800,color:'#BF5700'},{lbl:'Protein',val:ST.tPr||0,goal:170,color:'#4CAF7D'},{lbl:'Carbs',val:ST.tCb||0,goal:150,color:'#4A90D9'},{lbl:'Water',val:wC*8,goal:110,color:'#4A90D9'}];
+  var html='';
+  for(var i=0;i<mac.length;i++){var m=mac[i];var p=Math.min(1,m.val/m.goal);var c=2*Math.PI*26;html+='<div class="nri"><svg width="62" height="62" viewBox="0 0 62 62" style="overflow:visible"><circle cx="31" cy="31" r="26" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="5"/><circle cx="31" cy="31" r="26" fill="none" stroke="'+m.color+'" stroke-width="5" stroke-dasharray="'+(c*p)+' '+c+'" stroke-dashoffset="'+(c/4)+'" stroke-linecap="round"/><text x="31" y="35" text-anchor="middle" fill="'+m.color+'" font-size="12" font-weight="800" font-family="Barlow Condensed,sans-serif">'+Math.round(p*100)+'%</text></svg><div class="nrl">'+m.lbl+'</div><div class="nrv">'+m.val+'</div><div class="nrg">/ '+m.goal+(m.lbl==='Calories'?'cal':m.lbl==='Water'?'oz':'g')+'</div></div>'}
+  cont.innerHTML=html;
 }
 function rWC(){
   var cont=g('wcp');if(!cont)return;var lbl=g('wlb');if(lbl)lbl.textContent=(wC*8)+' / 110 oz';cont.innerHTML='';
@@ -1213,36 +1030,6 @@ function sendCM(txt,isAuto){
   var msgs=isAuto?[{role:'user',content:txt}]:cHist.slice(-10);
   fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:400,system:bCtx(),messages:msgs})}).then(function(r){return r.json()}).then(function(data){hideDots();var reply='Connection issue — keep going Terry! Hook Em!';if(data.content&&data.content.length>0&&data.content[0].text)reply=data.content[0].text;addM('c',reply);if(!isAuto)cHist.push({role:'assistant',content:reply})}).catch(function(){hideDots();addM('c','Connection issue — your mission does not pause. Keep executing. Hook Em!')})
 }
-function saveGSURL(){
-  var inp = document.getElementById('gs-url-input');
-  if(!inp||!inp.value.trim()){toast('Paste your Google Script URL first');return}
-  gsSetURL(inp.value.trim());
-  var st = document.getElementById('gs-status');
-  if(st) st.textContent = 'Connected: '+inp.value.trim().substring(0,40)+'...';
-}
-
-function showWeeklyReport(){
-  var rep = document.getElementById('gs-report');
-  if(!rep) return;
-  if(!GS_ENABLED){rep.style.display='block';rep.innerHTML='Connect Google Sheets first to see reports.';return}
-  rep.style.display='block';rep.innerHTML='Loading weekly report...';
-  gsGetReport('week', function(d){
-    if(!d||!d.ok){rep.innerHTML='No data yet. Log your vitals and meals for a few days first.';return}
-    rep.innerHTML = '<strong style="color:var(--gold)">Weekly Report</strong><br>' + d.report;
-  });
-}
-
-function showMonthlyReport(){
-  var rep = document.getElementById('gs-report');
-  if(!rep) return;
-  if(!GS_ENABLED){rep.style.display='block';rep.innerHTML='Connect Google Sheets first to see reports.';return}
-  rep.style.display='block';rep.innerHTML='Loading monthly report...';
-  gsGetReport('month', function(d){
-    if(!d||!d.ok){rep.innerHTML='No data yet. Log your vitals and meals for a few weeks first.';return}
-    rep.innerHTML = '<strong style="color:var(--gold)">Monthly Report</strong><br>' + d.report;
-  });
-}
-
 function rPA(){rEC();rSym();rRefills();
   var db=g('pad');if(db)db.textContent=new Date().toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
   var qa=g('qag');if(qa){qa.innerHTML='';for(var i=0;i<QA.length;i++){(function(a){var b=ce('button');b.className='qab';b.innerHTML='<div class="qai">'+a.ico+'</div><div class="qal">'+a.lbl+'</div>';b.onclick=a.fn;qa.appendChild(b)})(QA[i])}}
@@ -1288,191 +1075,6 @@ function tick(){var bpm=62+Math.floor(Math.random()*3);g('hb').textContent='♥ 
 // ── FOOD TRACKER (USDA FoodData Free) ────────
 var foodResult = null;
 var foodServings = 1;
-
-function switchFoodTab(n){
-  var s=document.getElementById('ftab-s');
-  var m=document.getElementById('ftab-m');
-  var b1=document.getElementById('ftab1');
-  var b2=document.getElementById('ftab2');
-  if(n===1){
-    if(s)s.style.display='block';if(m)m.style.display='none';
-    if(b1){b1.style.background='var(--o)';b1.style.color='white'}
-    if(b2){b2.style.background='rgba(255,255,255,0.07)';b2.style.color='var(--tx3)'}
-  } else {
-    if(s)s.style.display='none';if(m)m.style.display='block';
-    if(b2){b2.style.background='var(--o)';b2.style.color='white'}
-    if(b1){b1.style.background='rgba(255,255,255,0.07)';b1.style.color='var(--tx3)'}
-  }
-}
-
-function logManual(){
-  var nm=document.getElementById('man-name');
-  var ci=document.getElementById('man-cal');
-  var pi=document.getElementById('man-prot');
-  var bi=document.getElementById('man-carb');
-  var fi=document.getElementById('man-fat');
-  var mi=document.getElementById('food-meal');
-  if(!nm||!nm.value.trim()){toast('Enter a food name');return}
-  var cal=parseInt(ci&&ci.value?ci.value:0)||0;
-  var prot=parseFloat(pi&&pi.value?pi.value:0)||0;
-  var carb=parseFloat(bi&&bi.value?bi.value:0)||0;
-  var fat=parseFloat(fi&&fi.value?fi.value:0)||0;
-  var meal=mi?mi.value:'Meal';
-  if(cal===0&&prot===0){toast('Enter at least calories or protein');return}
-  ST.tCal=(ST.tCal||0)+cal;ST.tPr=(ST.tPr||0)+prot;ST.tCb=(ST.tCb||0)+carb;ST.tFat=(ST.tFat||0)+fat;ST.tFat=(ST.tFat||0)+fat;
-  var log=ST.foodLog||[];
-  log.push({meal:meal,desc:nm.value.trim(),cal:cal,prot:prot,carb:carb,fat:fat,srv:'manual',time:new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})});
-  ST.foodLog=log;
-  svS();updS();rNR();rFoodLog();rNutrTable();
-  nm.value='';if(ci)ci.value='';if(pi)pi.value='';if(bi)bi.value='';if(fi)fi.value='';
-  switchFoodTab(1);
-  toast('Logged: '+cal+' cal, '+prot+'g protein');
-}
-
-var ACT_TYPES=[
-  {id:'bike', nm:'🚴 Bike',    cal:480,min:60},
-  {id:'walk', nm:'🚶 Walk',    cal:140,min:30},
-  {id:'swim', nm:'🏊 Swim',    cal:300,min:45},
-  {id:'lift', nm:'💪 Weights', cal:180,min:30},
-  {id:'hiit', nm:'⚡ HIIT',    cal:350,min:25},
-  {id:'yoga', nm:'🧘 Yoga',    cal:80, min:30},
-  {id:'hike', nm:'🥾 Hike',    cal:400,min:60},
-  {id:'other',nm:'🏃 Other',   cal:0,  min:0}
-];
-var selActType='';
-
-function initActTypes(){
-  var cont=document.getElementById('act-type-btns');
-  if(!cont)return;
-  cont.innerHTML='';
-  for(var i=0;i<ACT_TYPES.length;i++){
-    (function(at){
-      var b=document.createElement('button');
-      b.id='atype-'+at.id;
-      b.style.cssText='padding:7px 13px;background:rgba(255,255,255,0.07);border:1px solid var(--b1);border-radius:20px;color:var(--tx2);font-family:Barlow,sans-serif;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap';
-      b.textContent=at.nm;
-      b.onclick=function(){
-        selActType=at.id;
-        for(var j=0;j<ACT_TYPES.length;j++){
-          var el=document.getElementById('atype-'+ACT_TYPES[j].id);
-          if(el){el.style.background='rgba(255,255,255,0.07)';el.style.color='var(--tx2)';el.style.borderColor='var(--b1)'}
-        }
-        b.style.background='rgba(191,87,0,0.2)';b.style.color='var(--o3)';b.style.borderColor='rgba(191,87,0,0.4)';
-        var ci=document.getElementById('act-cal');
-        var mi=document.getElementById('act-min');
-        if(ci&&(!ci.value||ci.value==='0')&&at.cal>0)ci.value=at.cal;
-        if(mi&&(!mi.value||mi.value==='0')&&at.min>0)mi.value=at.min;
-      };
-      cont.appendChild(b);
-    })(ACT_TYPES[i]);
-  }
-}
-
-function logActivity(){
-  var ci=document.getElementById('act-cal');
-  var mi=document.getElementById('act-min');
-  var si=document.getElementById('act-stand');
-  var ni=document.getElementById('act-notes');
-  var cal=parseInt(ci&&ci.value?ci.value:0)||0;
-  var min=parseInt(mi&&mi.value?mi.value:0)||0;
-  var stand=parseInt(si&&si.value?si.value:0)||0;
-  var notes=ni?ni.value.trim():'';
-  if(cal===0&&min===0&&stand===0){toast('Enter at least one value');return}
-  var typeName=selActType?ACT_TYPES.filter(function(a){return a.id===selActType})[0].nm:'Activity';
-  var log=ST.actLog||[];
-  log.push({type:typeName,cal:cal,min:min,stand:stand,notes:notes,time:new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})});
-  ST.actLog=log;
-  ST.actCal=(ST.actCal||0)+cal;
-  ST.actMin=(ST.actMin||0)+min;
-  ST.actStand=(ST.actStand||0)+stand;
-  svS();rActLog();
-  if(ci)ci.value='';if(mi)mi.value='';if(si)si.value='';if(ni)ni.value='';
-  selActType='';initActTypes();
-  toast('Logged! +'+cal+' cal burned, '+min+' min');
-}
-
-function rActLog(){
-  var tc=document.getElementById('act-total-cal');if(tc)tc.textContent=ST.actCal||0;
-  var tm=document.getElementById('act-total-min');if(tm)tm.textContent=ST.actMin||0;
-  var ts=document.getElementById('act-total-stand');if(ts)ts.textContent=ST.actStand||0;
-  var list=document.getElementById('act-log-list');if(!list)return;
-  list.innerHTML='';
-  var log=ST.actLog||[];
-  if(!log.length)return;
-  for(var i=log.length-1;i>=0;i--){
-    var e=log[i];
-    var d=document.createElement('div');
-    d.style.cssText='display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05)';
-    d.innerHTML='<div style="font-size:15px">'+( e.type.split(' ')[0]||'🏃')+'</div>'+
-      '<div style="flex:1"><div style="font-size:13px;font-weight:700;color:var(--tx)">'+e.type+'</div>'+
-      (e.notes?'<div style="font-size:11px;color:var(--tx3)">'+e.notes+'</div>':'')+
-      '</div>'+
-      '<div style="text-align:right">'+
-      (e.cal?'<div style="font-family:Barlow Condensed,sans-serif;font-size:15px;font-weight:900;color:var(--o3)">'+e.cal+' cal</div>':'')+
-      (e.min?'<div style="font-size:11px;color:var(--gr);font-weight:700">'+e.min+' min</div>':'')+
-      '</div>';
-    list.appendChild(d);
-  }
-}
-
-function rNutrTable(){
-  var cont = document.getElementById('nutr-table');
-  if(!cont) return;
-
-  var cal  = ST.tCal  || 0;
-  var prot = ST.tPr   || 0;
-  var carb = ST.tCb   || 0;
-  var fat  = ST.tFat  || 0;
-  var fiber= ST.tFib  || 0;
-  var sugar= ST.tSug  || 0;
-  var sodium=ST.tSod  || 0;
-  var chol = ST.tChol || 0;
-
-  var ROWS = [
-    {nm:'Calories',    val:cal,  goal:1800, unit:'kcal', color:'var(--o3)',  warn:cal>1900},
-    {nm:'Protein',     val:prot, goal:170,  unit:'g',    color:'var(--gr)',  warn:prot<160&&prot>0},
-    {nm:'Carbohydrates',val:carb,goal:150,  unit:'g',    color:'var(--bl)',  warn:carb>135},
-    {nm:'Fiber',       val:fiber,goal:25,   unit:'g',    color:'#8BC34A',   warn:false},
-    {nm:'Sugar',       val:sugar,goal:50,   unit:'g',    color:'#FF9800',   warn:sugar>50},
-    {nm:'Fat',         val:fat,  goal:60,   unit:'g',    color:'#e0a050',   warn:fat>65},
-    {nm:'Sodium',      val:sodium,goal:2000,unit:'mg',   color:'var(--gold)',warn:sodium>2000},
-    {nm:'Cholesterol', val:chol, goal:300,  unit:'mg',   color:'var(--tx2)',warn:false}
-  ];
-
-  cont.innerHTML = '';
-  for(var i=0;i<ROWS.length;i++){
-    var row = ROWS[i];
-    var left = Math.max(0, row.goal - row.val);
-    var pct  = row.goal > 0 ? Math.min(100, Math.round(row.val/row.goal*100)) : 0;
-    var leftColor = row.warn ? 'var(--re)' : left===0 ? 'var(--gr)' : 'var(--tx3)';
-
-    var d = document.createElement('div');
-    d.style.cssText = 'border-bottom:1px solid rgba(255,255,255,0.04)';
-
-    // Main row
-    var row1 = document.createElement('div');
-    row1.style.cssText = 'display:grid;grid-template-columns:1fr 60px 60px 60px;padding:10px 13px 4px';
-    row1.innerHTML =
-      '<div style="font-size:14px;font-weight:600;color:var(--tx)">' + row.nm + '</div>' +
-      '<div style="font-size:14px;font-weight:800;color:' + (row.warn?'var(--re)':row.color) + ';text-align:right;font-family:Barlow Condensed,sans-serif">' + row.val + '</div>' +
-      '<div style="font-size:13px;color:var(--tx3);text-align:right">' + row.goal + '</div>' +
-      '<div style="font-size:13px;font-weight:700;color:' + leftColor + ';text-align:right">' + left + '</div>';
-
-    // Progress bar
-    var row2 = document.createElement('div');
-    row2.style.cssText = 'padding:2px 13px 8px';
-    var barBg = document.createElement('div');
-    barBg.style.cssText = 'height:3px;background:rgba(255,255,255,0.05);border-radius:2px;overflow:hidden';
-    var barFill = document.createElement('div');
-    barFill.style.cssText = 'height:100%;border-radius:2px;width:' + pct + '%;background:' + (row.warn?'var(--re)':row.color) + ';transition:width 0.5s';
-    barBg.appendChild(barFill);
-    row2.appendChild(barBg);
-
-    d.appendChild(row1);
-    d.appendChild(row2);
-    cont.appendChild(d);
-  }
-}
 
 function rQF(){
   var cont=g('quick-foods');if(!cont)return;
@@ -1587,7 +1189,7 @@ function logFood(){
   var log=ST.foodLog||[];
   log.push({meal:meal,desc:foodResult.nm+' x'+s,cal:cal,prot:prot,carb:carb,fat:fat,srv:s+' serving'+(s!==1?'s':''),time:new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})});
   ST.foodLog=log;
-  svS();updS();rNR();rFoodLog();rNutrTable();clearFood();
+  svS();updS();rNR();rFoodLog();clearFood();
   toast('Logged: '+foodResult.nm+' — '+cal+' cal, '+prot+'g protein');
 }
 
@@ -1737,29 +1339,7 @@ function getDirReport(dir) {
   var greeting = new Date().getHours() < 12 ? 'Good morning' : new Date().getHours() < 17 ? 'Good afternoon' : 'Good evening';
   var report   = '';
 
-  if (dir.id === "sarah") {
-    var cal=ST.tCal||0;var prot=ST.tPr||0;var carb=ST.tCb||0;var waterOz=wC*8;
-    var wt=parseFloat(ST["v-wt"])||211;var lost=(211-wt).toFixed(1);
-    var h=new Date().getHours();
-    var g2=h<12?"Good morning":"Good afternoon";
-    var wins=[];var fires=[];
-    if(cal>=1700&&cal<=1900)wins.push("calories on target at "+cal);
-    else if(cal>1900)fires.push("calories over at "+cal+" — cut back now");
-    else if(cal>0)fires.push("only "+cal+" calories — eat more protein, muscle loss risk");
-    if(prot>=160)wins.push(prot+"g protein — excellent");
-    else if(prot>0)fires.push("protein at "+prot+"g — need "+(160-prot)+"g more, Vic does not want you losing muscle");
-    if(carb<=135)wins.push("carbs controlled at "+carb+"g");
-    else fires.push("carbs at "+carb+"g — next meal protein and vegetables only");
-    if(waterOz>=96)wins.push(waterOz+" oz water");
-    else fires.push("only "+waterOz+" oz water — drink two cups right now");
-    if(fires.length===0){
-      report=g2+" Terry. "+wins.join(". ")+". <b>This is what a man on a mission looks like.</b> "+lost+" lbs down. Vic is proud. Keep this up. — Dr. Sarah CNO";
-    } else if(wins.length>=fires.length){
-      report=g2+" Terry. Wins: "+wins.join(", ")+". Now hear me: "+fires.join(". ")+". <b>You are close but close does not win this mission.</b> Fix it now. — Dr. Sarah CNO";
-    } else {
-      report=g2+" Terry. I am going to be straight with you because that is what Vic would do. "+fires.join(". ")+". <b>This is not a bad day — it is a decision you can change right now.</b> You have "+( h<20?(20-h)+" hours left today.":"tonight to reset.")+" — Dr. Sarah CNO";
-    }
-  } else if (dir.id === 'claude') {
+  if (dir.id === 'claude') {
     var wins = [];
     if (biked)          wins.push('bike ride complete');
     if (medsDone >= 8)  wins.push(medsDone + ' of 10 meds taken');
@@ -1932,38 +1512,21 @@ function adjRef(idx,delta){
   else toast(refs[idx].nm+': '+refs[idx].supply+' days');
 }
 
+
 // ── GOOGLE SHEETS SYNC ─────────────────────
 var GS_URL = 'https://script.google.com/macros/s/AKfycbx9klUA3oiOMgwY_rAGM4GqR0lOLH4xCdb6gHAKJNRWARbzR1tGcWmYU60b8dAUQeFK/exec';
 var GS_ON  = true;
-
-function gsLoadURL(){
-  // URL is hardcoded - check localStorage for override only
-  try{var u=localStorage.getItem('ih_gs_url');if(u&&u.length>10){GS_URL=u;GS_ON=true}}catch(e){}
-  GS_ON = GS_URL.length > 10;
-}
-
-function gsSetURL(url){
-  GS_URL=url;GS_ON=!!url;
-  try{localStorage.setItem('ih_gs_url',url)}catch(e){}
-  var st=document.getElementById('gs-status');
-  if(st)st.textContent=GS_ON?'Connected':'Not connected';
-  toast(GS_ON?'Google Sheets connected!':'URL cleared');
-}
-
+function gsLoadURL(){try{var u=localStorage.getItem('ih_gs_url');if(u&&u.length>10)GS_URL=u}catch(e){}GS_ON=GS_URL.length>10}
 function gsSave(){
-  if(!GS_ON||!GS_URL||GS_URL.length<10)return;
+  if(!GS_ON||!GS_URL)return;
   try{
     var bp=(ST['v-bp']||'').split('/');
-    var params=[
-      'action=log',
-      'date='+encodeURIComponent(TODAY),
+    var p=['action=log','date='+encodeURIComponent(TODAY),
       'weight='+encodeURIComponent(ST['v-wt']||''),
       'bp_sys='+encodeURIComponent(bp[0]||''),
       'bp_dia='+encodeURIComponent(bp[1]||''),
       'heart_rate='+encodeURIComponent(ST['v-hr']||''),
       'glucose='+encodeURIComponent(ST['v-bs']||''),
-      'spo2='+encodeURIComponent(ST['v-spo2']||''),
-      'temp='+encodeURIComponent(ST['v-tmp']||''),
       'oura_sleep='+encodeURIComponent(ST['v-osl']||''),
       'calories='+encodeURIComponent(ST.tCal||0),
       'protein='+encodeURIComponent(ST.tPr||0),
@@ -1972,32 +1535,34 @@ function gsSave(){
       'water_oz='+encodeURIComponent(wC*8),
       'cal_burned='+encodeURIComponent(ST.actCal||0),
       'ex_minutes='+encodeURIComponent(ST.actMin||0),
-      'stand_hours='+encodeURIComponent(ST.actStand||0),
       'myair_score='+encodeURIComponent(ST['ma-tot']||''),
-      'myair_ahi='+encodeURIComponent(ST['ma-ahi']||'')
-    ];
-    var fullUrl = GS_URL + '?' + params.join('&');
-    // Try regular fetch first (works if CORS is allowed)
-    fetch(fullUrl, {method:'GET', mode:'no-cors'})
-      .then(function(){toast('Saved to Google Sheets')})
-      .catch(function(){});
-    // Image ping backup - always works cross-origin
-    var img = new Image();
-    img.onload = function(){toast('Saved to Google Sheets')};
-    img.src = fullUrl;
-  }catch(ex){}
+      'myair_ahi='+encodeURIComponent(ST['ma-ahi']||'')];
+    var u=GS_URL+'?'+p.join('&');
+    fetch(u,{method:'GET',mode:'no-cors'}).catch(function(){});
+    var img=new Image();img.src=u;
+  }catch(e){}
 }
-
-function gsReport(period,callback){
-  if(!GS_ON||!GS_URL){callback(null);return}
-  try{
-    fetch(GS_URL+'?action=report&period='+period)
-      .then(function(r){return r.json()})
-      .then(function(d){callback(d)})
-      .catch(function(){callback(null)});
-  }catch(e){callback(null)}
+function gsReport(period,cb){
+  if(!GS_ON||!GS_URL){cb(null);return}
+  fetch(GS_URL+'?action='+period).then(function(r){return r.json()}).then(cb).catch(function(){cb(null)});
 }
-
+function saveGSURL(){
+  var inp=document.getElementById('gs-url-input');if(!inp||!inp.value.trim())return;
+  GS_URL=inp.value.trim();GS_ON=true;
+  try{localStorage.setItem('ih_gs_url',GS_URL)}catch(e){}
+  var st=document.getElementById('gs-status');if(st)st.textContent='Connected';
+  toast('Connected!');
+}
+function showWeeklyReport(){
+  var rep=document.getElementById('gs-report');if(!rep)return;
+  rep.style.display='block';rep.innerHTML='Loading...';
+  gsReport('week',function(d){rep.innerHTML=d&&d.ok?'<strong style="color:var(--gold)">This Week</strong><br>'+d.report:'No data yet.'});
+}
+function showMonthlyReport(){
+  var rep=document.getElementById('gs-report');if(!rep)return;
+  rep.style.display='block';rep.innerHTML='Loading...';
+  gsReport('month',function(d){rep.innerHTML=d&&d.ok?'<strong style="color:var(--gold)">This Month</strong><br>'+d.report:'No data yet.'});
+}
 
 window.onload=function(){
   gsLoadURL();
