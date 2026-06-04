@@ -938,7 +938,7 @@ function rVt(){
           var k=this.getAttribute('data-key');
           ST[k]=this.value;
           try{localStorage.setItem('ih_'+TODAY,JSON.stringify(ST))}catch(e){}
-          updS();rVt();
+          updS();rVt();gsSave();
         };
         d.appendChild(inp);
       }else{
@@ -998,7 +998,7 @@ function rMA(){
         var mid=this.getAttribute('data-mid');
         ST['ma-'+mid]=this.value;
         try{localStorage.setItem('ih_'+TODAY,JSON.stringify(ST))}catch(e){}
-        rMA();
+        rMA();gsSave();
       };
       var ptlbl=ce('div');ptlbl.className='mapt';
       ptlbl.textContent=raw?('+'+pts+' pts'):('/ '+m.max+' pts');
