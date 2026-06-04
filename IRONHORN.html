@@ -1933,7 +1933,7 @@ function adjRef(idx,delta){
 }
 
 // ── GOOGLE SHEETS SYNC ─────────────────────
-var GS_URL = 'https://script.google.com/macros/s/AKfycbxX5AeJNY6DXCHcCmVbgQruSK3AMAuGTsKPvw1luBlg9Oh2Qvs9yMvwEymIvzCdfVmV/exec';
+var GS_URL = 'https://script.google.com/macros/s/AKfycbx9klUA3oiOMgwY_rAGM4GqR0lOLH4xCdb6gHAKJNRWARbzR1tGcWmYU60b8dAUQeFK/exec';
 var GS_ON  = true;
 
 function gsLoadURL(){
@@ -1977,11 +1977,13 @@ function gsSave(){
       'myair_ahi='+encodeURIComponent(ST['ma-ahi']||'')
     ];
     var fullUrl = GS_URL + '?' + params.join('&');
-    // Use no-cors fetch - fires and forgets, no response needed
+    // Try regular fetch first (works if CORS is allowed)
     fetch(fullUrl, {method:'GET', mode:'no-cors'})
+      .then(function(){toast('Saved to Google Sheets')})
       .catch(function(){});
-    // Also try image ping as backup
+    // Image ping backup - always works cross-origin
     var img = new Image();
+    img.onload = function(){toast('Saved to Google Sheets')};
     img.src = fullUrl;
   }catch(ex){}
 }
