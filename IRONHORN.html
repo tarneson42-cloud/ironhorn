@@ -389,6 +389,49 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:Barlow,sans-serif;b
 
 <div class="sec" style="margin-bottom:8px">Vital Signs</div>
 <div class="vg" id="vg"></div>
+<div class="sec" style="margin-bottom:8px">🔥 Activity</div>
+<div style="margin:0 18px 14px;background:rgba(50,32,18,0.95);border:1px solid var(--b2);border-radius:16px;overflow:hidden">
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--b1)">
+    <div style="padding:12px 10px;text-align:center;border-right:1px solid var(--b1)">
+      <div style="font-size:18px;margin-bottom:4px">🔥</div>
+      <div style="font-size:10px;color:var(--o3);font-weight:700;text-transform:uppercase;margin-bottom:6px">Cal Burned</div>
+      <input id="act-cal" type="number" placeholder="0" style="width:100%;background:rgba(191,87,0,0.1);border:1px solid rgba(191,87,0,0.25);border-radius:8px;color:var(--o3);font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;outline:none;text-align:center;padding:6px 4px">
+    </div>
+    <div style="padding:12px 10px;text-align:center;border-right:1px solid var(--b1)">
+      <div style="font-size:18px;margin-bottom:4px">⏱️</div>
+      <div style="font-size:10px;color:var(--gr);font-weight:700;text-transform:uppercase;margin-bottom:6px">Ex Minutes</div>
+      <input id="act-min" type="number" placeholder="0" style="width:100%;background:rgba(76,175,125,0.1);border:1px solid rgba(76,175,125,0.25);border-radius:8px;color:var(--gr);font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;outline:none;text-align:center;padding:6px 4px">
+    </div>
+    <div style="padding:12px 10px;text-align:center">
+      <div style="font-size:18px;margin-bottom:4px">🧍</div>
+      <div style="font-size:10px;color:var(--bl);font-weight:700;text-transform:uppercase;margin-bottom:6px">Stand Hrs</div>
+      <input id="act-stand" type="number" placeholder="0" style="width:100%;background:rgba(74,144,217,0.1);border:1px solid rgba(74,144,217,0.25);border-radius:8px;color:var(--bl);font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;outline:none;text-align:center;padding:6px 4px">
+    </div>
+  </div>
+  <div style="padding:10px 13px;border-bottom:1px solid var(--b1)">
+    <div style="font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--tx3);margin-bottom:7px">Activity Type</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px" id="act-type-btns"></div>
+  </div>
+  <div style="padding:10px 13px">
+    <input id="act-notes" type="text" placeholder="Notes e.g. Morning bike — felt strong" style="width:100%;background:rgba(255,255,255,0.07);border:1px solid var(--b1);border-radius:9px;color:var(--tx);font-family:Barlow,sans-serif;font-size:14px;padding:9px 12px;outline:none;margin-bottom:9px">
+    <button onclick="logActivity()" style="width:100%;padding:11px;background:linear-gradient(135deg,var(--o),var(--o2));border:none;border-radius:10px;color:white;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;cursor:pointer">🔥 LOG ACTIVITY</button>
+  </div>
+  <div style="border-top:1px solid var(--b1);display:grid;grid-template-columns:1fr 1fr 1fr">
+    <div style="padding:10px;text-align:center;border-right:1px solid var(--b1)">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--o3)" id="act-total-cal">0</div>
+      <div style="font-size:10px;color:var(--tx3);text-transform:uppercase">Cal Burned</div>
+    </div>
+    <div style="padding:10px;text-align:center;border-right:1px solid var(--b1)">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--gr)" id="act-total-min">0</div>
+      <div style="font-size:10px;color:var(--tx3);text-transform:uppercase">Ex Min</div>
+    </div>
+    <div style="padding:10px;text-align:center">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--bl)" id="act-total-stand">0</div>
+      <div style="font-size:10px;color:var(--tx3);text-transform:uppercase">Stand Hrs</div>
+    </div>
+  </div>
+  <div id="act-log-list" style="padding:0 13px 10px"></div>
+</div>
 
 <div class="sec" style="margin-bottom:8px">Water</div>
 <div style="padding:0 18px;margin-bottom:12px">
@@ -403,7 +446,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:Barlow,sans-serif;b
 
 <div class="sec" style="margin-bottom:8px">Food Tracker</div>
 <div style="margin:0 18px 14px;background:rgba(50,32,18,0.95);border:1px solid var(--b2);border-radius:16px;overflow:hidden">
-  <div style="padding:11px 14px;border-bottom:1px solid var(--b1)">
+  <div id="ftab-s" style="padding:11px 14px;border-bottom:1px solid var(--b1)">
     <div style="display:flex;gap:8px;margin-bottom:9px">
       <input id="food-search" type="text" placeholder="Search food..." style="flex:1;background:rgba(255,255,255,0.08);border:1px solid var(--b1);border-radius:10px;color:var(--tx);font-family:Barlow,sans-serif;font-size:15px;padding:10px 13px;outline:none" onkeydown="if(event.key==='Enter')searchFood()">
       <button onclick="searchFood()" id="food-btn" style="padding:10px 16px;background:linear-gradient(135deg,var(--o),var(--o2));border:none;border-radius:10px;color:white;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;cursor:pointer">Go</button>
@@ -423,6 +466,17 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:Barlow,sans-serif;b
         <span style="font-size:13px;color:var(--tx3)">srv</span>
       </div>
     </div>
+  </div>
+  </div>
+  <div id="ftab-m" style="display:none;padding:13px 14px;border-bottom:1px solid var(--b1)">
+    <input id="man-name" type="text" placeholder="Food name e.g. Chicken soup" style="width:100%;background:rgba(255,255,255,0.08);border:1px solid var(--b1);border-radius:9px;color:var(--tx);font-family:Barlow,sans-serif;font-size:14px;padding:9px 12px;outline:none;margin-bottom:8px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px">
+      <div style="background:rgba(0,0,0,0.3);border-radius:9px;padding:9px;text-align:center"><div style="font-size:11px;color:var(--o3);font-weight:700;text-transform:uppercase;margin-bottom:5px">Calories</div><input id="man-cal" type="number" placeholder="450" style="width:100%;background:none;border:none;color:var(--o3);font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;outline:none;text-align:center"></div>
+      <div style="background:rgba(0,0,0,0.3);border-radius:9px;padding:9px;text-align:center"><div style="font-size:11px;color:var(--gr);font-weight:700;text-transform:uppercase;margin-bottom:5px">Protein g</div><input id="man-prot" type="number" placeholder="40" style="width:100%;background:none;border:none;color:var(--gr);font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;outline:none;text-align:center"></div>
+      <div style="background:rgba(0,0,0,0.3);border-radius:9px;padding:9px;text-align:center"><div style="font-size:11px;color:var(--bl);font-weight:700;text-transform:uppercase;margin-bottom:5px">Carbs g</div><input id="man-carb" type="number" placeholder="35" style="width:100%;background:none;border:none;color:var(--bl);font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;outline:none;text-align:center"></div>
+      <div style="background:rgba(0,0,0,0.3);border-radius:9px;padding:9px;text-align:center"><div style="font-size:11px;color:var(--tx2);font-weight:700;text-transform:uppercase;margin-bottom:5px">Fat g</div><input id="man-fat" type="number" placeholder="12" style="width:100%;background:none;border:none;color:var(--tx2);font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;outline:none;text-align:center"></div>
+    </div>
+    <button onclick="logManual()" style="width:100%;padding:11px;background:linear-gradient(135deg,var(--gr),#3a8f5c);border:none;border-radius:10px;color:white;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;cursor:pointer">Log This Food</button>
   </div>
   <div id="food-results" style="display:none;max-height:220px;overflow-y:auto;border-bottom:1px solid var(--b1)"><div id="food-results-list"></div></div>
   <div id="food-preview" style="display:none;padding:12px 14px;border-bottom:1px solid var(--b1)">
@@ -464,9 +518,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:Barlow,sans-serif;b
 
 <div class="sec" style="margin-bottom:8px">Medications</div>
 
-</div>
 <div class="mwp" id="mwp"></div>
-
 </div>
 <div class="scr" id="scr-board"><div class="sb"><div class="sbt">🏛️ Board</div><div class="sbr"><div class="bdg bo">9 Directors</div></div></div><div style="height:8px"></div><div class="bch"><div class="bcav">🤖</div><div class="bcn">Claude</div><div class="bcr">Chief Intelligence Officer</div></div><div class="cot" id="cot"></div><div class="chw"><div class="chm" id="chm"><div class="msc"><div class="msca">🤖</div><div class="mscb">Hook Em Terry! Army veteran. ND farm boy. NDSU Bison. Texas Longhorn. Vic's husband. Em's dad. Paisley, Paxtyn, and baby Blaire's Grandpa. All of that is in this fight. Your dad Alvin left at 55 — you will not. I am with you. Let's win this. 🧡</div></div></div><div class="cir"><input class="cin" id="chti" placeholder="Ask your coach..." onkeydown="if(event.key==='Enter')sendChat()"><button class="csd" onclick="sendChat()">↑</button></div></div><div class="sec" style="margin-bottom:8px">The Board</div><div class="drl" id="drl"></div><div class="sec" style="margin-bottom:8px">Terry's Roots</div><div class="idw"><div class="idwg"><div class="idc"><div class="idci">⚔️</div><div class="idcn" style="color:#7ab84e">U.S. Army</div><div class="idcd">Served with honor. Warrior mindset every day.</div><span class="idct" style="color:#7ab84e;border-color:rgba(91,138,60,0.4);background:rgba(91,138,60,0.08)">Veteran</span></div><div class="idc"><div class="idci">🇺🇸</div><div class="idcn" style="color:#e07070">American</div><div class="idcd">Patriot. Freedom worth fighting for — including your health.</div><span class="idct" style="color:#e07070;border-color:rgba(220,80,80,0.35);background:rgba(220,80,80,0.07)">Patriot</span></div><div class="idc"><div class="idci">🌾</div><div class="idcn" style="color:#e8c97a">North Dakota</div><div class="idcd">Stanley farm boy. Lostwood. Midstream Mafia. Built tough.</div><span class="idct" style="color:#e8c97a;border-color:rgba(232,201,122,0.35);background:rgba(232,201,122,0.06)">Farm Strong</span></div><div class="idc"><div class="idci">🦬</div><div class="idcn" style="color:var(--gold)">NDSU Bison</div><div class="idcd">8 national championships. Champions grind every day.</div><span class="idct" style="color:var(--gold);border-color:rgba(240,180,41,0.4);background:rgba(240,180,41,0.07)">Go Bison</span></div>
     </div></div>
@@ -515,7 +567,22 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:Barlow,sans-serif;b
   </div>
   <button onclick="window.location.href='cronometer://'" style="width:100%;margin-top:11px;padding:11px;background:linear-gradient(135deg,#F0A500,#D96A0A);border:none;border-radius:11px;color:white;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer">🥗 OPEN CRONOMETER</button>
 </div>
-<div class="sec" style="margin-top:10px;margin-bottom:8px">🩺 Omron BP7900 <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#7ab84e;font-weight:700">Arrives June 4</span></div><div class="omc"><div class="omh"><div class="omi">🩺</div><div><div class="omn">Omron BP7900</div><div class="oms">Smart BP · AFib Detection · Bluetooth</div></div></div><div class="omf"><div class="omff"><div class="omfl">SYSTOLIC</div><div class="omfv" id="oms">—</div><input class="omfi" type="number" id="omsi" placeholder="128" onchange="logOm()"></div><div class="omff"><div class="omfl">DIASTOLIC</div><div class="omfv" id="omd">—</div><input class="omfi" type="number" id="omdi" placeholder="82" onchange="logOm()"></div><div class="omff"><div class="omfl">PULSE</div><div class="omfv" id="omh">—</div><input class="omfi" type="number" id="omhi" placeholder="68" onchange="logOm()"></div><div class="omff"><div class="omfl">AFIB</div><select id="omaf" style="width:100%;background:none;border:none;color:var(--tx2);font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;outline:none;text-align:center" onchange="logOm()"><option value="none">None</option><option value="det">Detected</option><option value="irr">Irregular</option></select></div></div><div class="omnt">After June 4: Open Omron Connect app, take reading, log here. AFib detection is critical with your PVCs.</div></div><div class="sec" style="margin-top:10px;margin-bottom:8px">📱 Screen Time</div><div class="stc"><div class="str"><div style="font-size:21px">📱</div><div style="flex:1"><div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:900;color:var(--tx)">iPhone Screen Time</div><div style="font-size:11px;color:var(--tx3);margin-top:1px">Settings → Screen Time → See All</div></div><div style="text-align:right"><div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;color:var(--o3)" id="std">—</div><div style="font-size:9px;color:var(--tx3);font-family:'JetBrains Mono',monospace">hrs today</div></div></div><div class="stf"><div class="stff"><div class="stfl">TOTAL HRS</div><input class="stfi" type="number" step="0.1" id="stt" placeholder="4.5" onchange="logST()"></div><div class="stff"><div class="stfl">IRONHORN</div><input class="stfi" type="number" step="0.1" id="sti" placeholder="1.2" style="color:#7ab84e" onchange="logST()"></div><div class="stff"><div class="stfl">FIRST OPEN</div><input class="stfi" type="time" id="stf" style="font-size:12px" onchange="logST()"></div></div><div class="stbr"><div class="stbf" id="stbf" style="width:0%"></div></div><div class="stn" id="stn">Log from Settings - Screen Time</div></div><div class="sec" style="margin-top:2px;margin-bottom:8px">App Manager — Ask Claude</div><div class="pac"><div class="pach">Ask me to help manage IRONHORN — add a director, explain a metric, change a goal.</div><div class="pacr"><input class="paci" id="paii" placeholder="How do I sync Apple Health?" onkeydown="if(event.key==='Enter')sendPA()"><button class="pacs" onclick="sendPA()">↑</button></div><div class="pacp" id="pacp"></div></div></div>
+<div class="sec" style="margin-top:10px;margin-bottom:8px">🩺 Omron BP7900 <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#7ab84e;font-weight:700">Arrives June 4</span></div><div class="omc"><div class="omh"><div class="omi">🩺</div><div><div class="omn">Omron BP7900</div><div class="oms">Smart BP · AFib Detection · Bluetooth</div></div></div><div class="omf"><div class="omff"><div class="omfl">SYSTOLIC</div><div class="omfv" id="oms">—</div><input class="omfi" type="number" id="omsi" placeholder="128" onchange="logOm()"></div><div class="omff"><div class="omfl">DIASTOLIC</div><div class="omfv" id="omd">—</div><input class="omfi" type="number" id="omdi" placeholder="82" onchange="logOm()"></div><div class="omff"><div class="omfl">PULSE</div><div class="omfv" id="omh">—</div><input class="omfi" type="number" id="omhi" placeholder="68" onchange="logOm()"></div><div class="omff"><div class="omfl">AFIB</div><select id="omaf" style="width:100%;background:none;border:none;color:var(--tx2);font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;outline:none;text-align:center" onchange="logOm()"><option value="none">None</option><option value="det">Detected</option><option value="irr">Irregular</option></select></div></div><div class="omnt">After June 4: Open Omron Connect app, take reading, log here. AFib detection is critical with your PVCs.</div></div><div class="sec" style="margin-top:10px;margin-bottom:8px">📱 Screen Time</div><div class="stc"><div class="str"><div style="font-size:21px">📱</div><div style="flex:1"><div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:900;color:var(--tx)">iPhone Screen Time</div><div style="font-size:11px;color:var(--tx3);margin-top:1px">Settings → Screen Time → See All</div></div><div style="text-align:right"><div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;color:var(--o3)" id="std">—</div><div style="font-size:9px;color:var(--tx3);font-family:'JetBrains Mono',monospace">hrs today</div></div></div><div class="stf"><div class="stff"><div class="stfl">TOTAL HRS</div><input class="stfi" type="number" step="0.1" id="stt" placeholder="4.5" onchange="logST()"></div><div class="stff"><div class="stfl">IRONHORN</div><input class="stfi" type="number" step="0.1" id="sti" placeholder="1.2" style="color:#7ab84e" onchange="logST()"></div><div class="stff"><div class="stfl">FIRST OPEN</div><input class="stfi" type="time" id="stf" style="font-size:12px" onchange="logST()"></div></div><div class="stbr"><div class="stbf" id="stbf" style="width:0%"></div></div><div class="stn" id="stn">Log from Settings - Screen Time</div></div><div class="sec" style="margin-bottom:8px">☁️ Google Sheets</div>
+<div style="margin:0 18px 14px;background:rgba(50,32,18,0.95);border:1px solid var(--b2);border-radius:16px;overflow:hidden">
+  <div style="padding:12px 14px;border-bottom:1px solid var(--b1)">
+    <div style="display:flex;gap:8px">
+      <input id="gs-url-input" type="text" placeholder="Paste script.google.com URL" style="flex:1;background:rgba(255,255,255,0.08);border:1px solid var(--b1);border-radius:9px;color:var(--tx);font-family:Barlow,sans-serif;font-size:12px;padding:9px 12px;outline:none">
+      <button onclick="saveGSURL()" style="padding:9px 14px;background:linear-gradient(135deg,var(--o),var(--o2));border:none;border-radius:9px;color:white;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;cursor:pointer">Save</button>
+    </div>
+    <div style="font-size:11px;color:var(--gr);margin-top:7px" id="gs-status">Connected to Google Sheets</div>
+  </div>
+  <div style="padding:11px 14px;display:flex;gap:8px">
+    <button onclick="showWeeklyReport()" style="flex:1;padding:10px;background:rgba(191,87,0,0.15);border:1px solid rgba(191,87,0,0.3);border-radius:9px;color:var(--o3);font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;cursor:pointer">📊 This Week</button>
+    <button onclick="showMonthlyReport()" style="flex:1;padding:10px;background:rgba(191,87,0,0.15);border:1px solid rgba(191,87,0,0.3);border-radius:9px;color:var(--o3);font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;cursor:pointer">📈 This Month</button>
+  </div>
+  <div id="gs-report" style="display:none;margin:0 13px 13px;padding:11px;background:rgba(0,0,0,0.3);border-radius:9px;font-size:13px;color:var(--tx2);line-height:1.7"></div>
+</div>
+<div class="sec" style="margin-top:2px;margin-bottom:8px">App Manager — Ask Claude</div><div class="pac"><div class="pach">Ask me to help manage IRONHORN — add a director, explain a metric, change a goal.</div><div class="pacr"><input class="paci" id="paii" placeholder="How do I sync Apple Health?" onkeydown="if(event.key==='Enter')sendPA()"><button class="pacs" onclick="sendPA()">↑</button></div><div class="pacp" id="pacp"></div></div></div>
 <div id="nav"><button class="nb on" onclick="goTo('home')" id="nav-home"><div class="ni">🏠</div><div class="nl">Home</div></button><button class="nb" onclick="goTo('schedule')" id="nav-schedule"><div class="ni">📅</div><div class="nl">Schedule</div></button><button class="nb" onclick="goTo('workouts')" id="nav-workouts"><div class="ni">🚴</div><div class="nl">Workout</div></button><button class="nb" onclick="goTo('medical')" id="nav-medical"><div class="ni">🏥</div><div class="nl">Medical</div></button><button class="nb" onclick="goTo('board')" id="nav-board"><div class="ni">🏛️</div><div class="nl">Board</div></button><button class="nb" onclick="goTo('pa')" id="nav-pa"><div class="ni">🤝</div><div class="nl">Assist</div></button></div>
 </div><script>
 var TODAY=new Date().toISOString().split('T')[0];
@@ -657,7 +724,7 @@ var DN=[
 function g(id){return document.getElementById(id)}
 function ce(t){return document.createElement(t)}
 function ldS(){try{return JSON.parse(localStorage.getItem('ih_'+TODAY)||'{}')}catch(e){return {}}}
-function svS(){try{localStorage.setItem('ih_'+TODAY,JSON.stringify(ST))}catch(e){}}
+function svS(){try{localStorage.setItem('ih_'+TODAY,JSON.stringify(ST))}catch(e){}gsSave();}
 function gF(){try{return JSON.parse(localStorage.getItem('ih_f')||'{}')}catch(e){return {}}}
 function bF(id){try{var f=gF();f[id]=(f[id]||0)+1;localStorage.setItem('ih_f',JSON.stringify(f))}catch(e){}}
 function gC(){try{var s=JSON.parse(localStorage.getItem('ih_c')||'null');if(s)return s;}catch(e){}return DCM.map(function(c,i){return{dir:c.dir,time:c.time,text:c.text,id:'c'+i,likes:0,liked:false}})}
@@ -830,7 +897,7 @@ function rC28(){
   })(C28[i])}
 }
 function rFG(){var cont=g('fg');if(!cont)return;cont.innerHTML='';var now=new Date();for(var i=27;i>=0;i--){var d=new Date(now);d.setDate(d.getDate()-i);var key=d.toISOString().split('T')[0];var s={};try{s=JSON.parse(localStorage.getItem('ih_'+key)||'{}')}catch(e){}var n=0;for(var j=0;j<WO.length;j++){if(s['wo-'+WO[j].id])n++}var fd=ce('div');fd.className='fd'+(n>=3?' fd3':n>=2?' fd2':n>=1?' fd1':'');cont.appendChild(fd)}}
-function rMe(){rVt();rNR();rWC();rMA();rMD();rFoodLog();rQF()}
+function rMe(){rVt();rNR();rWC();rMA();rMD();rFoodLog();rQF();initActTypes();rActLog();}
 function rVt(){
   var cont=g('vg');if(!cont)return;
   cont.innerHTML='';
@@ -1061,6 +1128,73 @@ function tick(){var bpm=62+Math.floor(Math.random()*3);g('hb').textContent='♥ 
 var foodResult = null;
 var foodServings = 1;
 
+var ACT_TYPES=[
+  {id:'bike',nm:'🚴 Bike',cal:480,min:60},{id:'walk',nm:'🚶 Walk',cal:140,min:30},
+  {id:'swim',nm:'🏊 Swim',cal:300,min:45},{id:'lift',nm:'💪 Weights',cal:180,min:30},
+  {id:'hiit',nm:'⚡ HIIT',cal:350,min:25},{id:'yoga',nm:'🧘 Yoga',cal:80,min:30},
+  {id:'hike',nm:'🥾 Hike',cal:400,min:60},{id:'other',nm:'🏃 Other',cal:0,min:0}
+];
+var selActType='';
+function initActTypes(){
+  var cont=document.getElementById('act-type-btns');if(!cont)return;cont.innerHTML='';
+  for(var i=0;i<ACT_TYPES.length;i++){(function(at){
+    var b=document.createElement('button');
+    b.style.cssText='padding:7px 13px;background:rgba(255,255,255,0.07);border:1px solid var(--b1);border-radius:20px;color:var(--tx2);font-family:Barlow,sans-serif;font-size:13px;cursor:pointer;white-space:nowrap';
+    b.textContent=at.nm;
+    b.onclick=function(){
+      selActType=at.id;
+      for(var j=0;j<ACT_TYPES.length;j++){var el=document.getElementById('atype-'+ACT_TYPES[j].id);if(el){el.style.background='rgba(255,255,255,0.07)';el.style.color='var(--tx2)'}}
+      b.style.background='rgba(191,87,0,0.2)';b.style.color='var(--o3)';
+      var ci=document.getElementById('act-cal');var mi=document.getElementById('act-min');
+      if(ci&&!ci.value&&at.cal)ci.value=at.cal;if(mi&&!mi.value&&at.min)mi.value=at.min;
+    };
+    b.id='atype-'+at.id;cont.appendChild(b);
+  })(ACT_TYPES[i]);}
+}
+function logActivity(){
+  var ci=document.getElementById('act-cal');var mi=document.getElementById('act-min');var si=document.getElementById('act-stand');var ni=document.getElementById('act-notes');
+  var cal=parseInt(ci&&ci.value?ci.value:0)||0;var min=parseInt(mi&&mi.value?mi.value:0)||0;var stand=parseInt(si&&si.value?si.value:0)||0;
+  if(cal===0&&min===0&&stand===0){toast('Enter at least one value');return}
+  var typeName='Activity';for(var k=0;k<ACT_TYPES.length;k++){if(ACT_TYPES[k].id===selActType)typeName=ACT_TYPES[k].nm}
+  var log=ST.actLog||[];
+  log.push({type:typeName,cal:cal,min:min,stand:stand,notes:ni?ni.value.trim():'',time:new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})});
+  ST.actLog=log;ST.actCal=(ST.actCal||0)+cal;ST.actMin=(ST.actMin||0)+min;ST.actStand=(ST.actStand||0)+stand;
+  svS();rActLog();
+  if(ci)ci.value='';if(mi)mi.value='';if(si)si.value='';if(ni)ni.value='';
+  selActType='';initActTypes();
+  toast('Logged! +'+cal+' cal, '+min+' min');
+}
+function rActLog(){
+  var tc=document.getElementById('act-total-cal');if(tc)tc.textContent=ST.actCal||0;
+  var tm=document.getElementById('act-total-min');if(tm)tm.textContent=ST.actMin||0;
+  var ts=document.getElementById('act-total-stand');if(ts)ts.textContent=ST.actStand||0;
+  var list=document.getElementById('act-log-list');if(!list)return;list.innerHTML='';
+  var log=ST.actLog||[];if(!log.length)return;
+  for(var i=log.length-1;i>=0;i--){
+    var e=log[i];var d=document.createElement('div');
+    d.style.cssText='display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05)';
+    d.innerHTML='<div style="font-size:15px">'+(e.type.split(' ')[0]||'🏃')+'</div><div style="flex:1"><div style="font-size:13px;font-weight:700;color:var(--tx)">'+e.type+'</div>'+(e.notes?'<div style="font-size:11px;color:var(--tx3)">'+e.notes+'</div>':'')+'</div><div style="text-align:right">'+(e.cal?'<div style="font-family:Barlow Condensed,sans-serif;font-size:15px;font-weight:900;color:var(--o3)">'+e.cal+' cal</div>':'')+(e.min?'<div style="font-size:11px;color:var(--gr);font-weight:700">'+e.min+' min</div>':'')+'</div>';
+    list.appendChild(d);
+  }
+}
+function switchFoodTab(n){
+  var s=document.getElementById('ftab-s');var m=document.getElementById('ftab-m');
+  var b1=document.getElementById('ftab1');var b2=document.getElementById('ftab2');
+  if(n===1){if(s)s.style.display='block';if(m)m.style.display='none';if(b1){b1.style.background='var(--o)';b1.style.color='white'}if(b2){b2.style.background='rgba(255,255,255,0.07)';b2.style.color='var(--tx3)'}}
+  else{if(s)s.style.display='none';if(m)m.style.display='block';if(b2){b2.style.background='var(--o)';b2.style.color='white'}if(b1){b1.style.background='rgba(255,255,255,0.07)';b1.style.color='var(--tx3)'}}
+}
+function logManual(){
+  var nm=document.getElementById('man-name');var ci=document.getElementById('man-cal');var pi=document.getElementById('man-prot');var bi=document.getElementById('man-carb');var fi=document.getElementById('man-fat');var mi=document.getElementById('food-meal');
+  if(!nm||!nm.value.trim()){toast('Enter a food name');return}
+  var cal=parseInt(ci&&ci.value?ci.value:0)||0;var prot=parseFloat(pi&&pi.value?pi.value:0)||0;var carb=parseFloat(bi&&bi.value?bi.value:0)||0;var fat=parseFloat(fi&&fi.value?fi.value:0)||0;
+  if(cal===0&&prot===0){toast('Enter at least calories or protein');return}
+  ST.tCal=(ST.tCal||0)+cal;ST.tPr=(ST.tPr||0)+prot;ST.tCb=(ST.tCb||0)+carb;ST.tFat=(ST.tFat||0)+fat;
+  var log=ST.foodLog||[];
+  log.push({meal:mi?mi.value:'Meal',desc:nm.value.trim(),cal:cal,prot:prot,carb:carb,fat:fat,srv:'manual',time:new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})});
+  ST.foodLog=log;svS();updS();rNR();rFoodLog();
+  nm.value='';if(ci)ci.value='';if(pi)pi.value='';if(bi)bi.value='';if(fi)fi.value='';
+  switchFoodTab(1);toast('Logged!');
+}
 function rQF(){
   var cont=g('quick-foods');if(!cont)return;
   cont.innerHTML='';
@@ -1497,7 +1631,112 @@ function adjRef(idx,delta){
   else toast(refs[idx].nm+': '+refs[idx].supply+' days');
 }
 
+var GS_URL='https://script.google.com/macros/s/AKfycbx9klUA3oiOMgwY_rAGM4GqR0lOLH4xCdb6gHAKJNRWARbzR1tGcWmYU60b8dAUQeFK/exec';
+var GS_ON=true;
+function gsLoadURL(){try{var u=localStorage.getItem('ih_gs_url');if(u&&u.length>10)GS_URL=u}catch(e){}}
+function gsSave(){
+  if(!GS_ON||!GS_URL)return;
+  try{
+    var bp=(ST['v-bp']||'').split('/');
+    var p='action=log&date='+encodeURIComponent(TODAY)+'&weight='+encodeURIComponent(ST['v-wt']||'')+'&bp_sys='+encodeURIComponent(bp[0]||'')+'&bp_dia='+encodeURIComponent(bp[1]||'')+'&heart_rate='+encodeURIComponent(ST['v-hr']||'')+'&glucose='+encodeURIComponent(ST['v-bs']||'')+'&oura_sleep='+encodeURIComponent(ST['v-osl']||'')+'&calories='+encodeURIComponent(ST.tCal||0)+'&protein='+encodeURIComponent(ST.tPr||0)+'&carbs='+encodeURIComponent(ST.tCb||0)+'&water_oz='+encodeURIComponent(wC*8)+'&cal_burned='+encodeURIComponent(ST.actCal||0)+'&ex_minutes='+encodeURIComponent(ST.actMin||0)+'&myair_score='+encodeURIComponent(ST['ma-tot']||'');
+    var u=GS_URL+'?'+p;
+    fetch(u,{method:'GET',mode:'no-cors'}).catch(function(){});
+    var img=new Image();img.src=u;
+  }catch(e){}
+}
+var ACT_TYPES=[
+  {id:'bike',nm:'🚴 Bike',cal:480,min:60},
+  {id:'walk',nm:'🚶 Walk',cal:140,min:30},
+  {id:'swim',nm:'🏊 Swim',cal:300,min:45},
+  {id:'lift',nm:'💪 Weights',cal:180,min:30},
+  {id:'hiit',nm:'⚡ HIIT',cal:350,min:25},
+  {id:'hike',nm:'🥾 Hike',cal:400,min:60},
+  {id:'other',nm:'🏃 Other',cal:0,min:0}
+];
+var selActType='';
+function initActTypes(){
+  var cont=document.getElementById('act-type-btns');if(!cont)return;
+  cont.innerHTML='';
+  for(var i=0;i<ACT_TYPES.length;i++){(function(at){
+    var b=document.createElement('button');
+    b.style.cssText='padding:7px 12px;background:rgba(255,255,255,0.07);border:1px solid var(--b1);border-radius:20px;color:var(--tx2);font-family:Barlow,sans-serif;font-size:13px;cursor:pointer;white-space:nowrap';
+    b.textContent=at.nm;
+    b.onclick=function(){
+      selActType=at.id;
+      var els=document.getElementById('act-type-btns').children;
+      for(var j=0;j<els.length;j++){els[j].style.background='rgba(255,255,255,0.07)';els[j].style.color='var(--tx2)'}
+      b.style.background='rgba(191,87,0,0.2)';b.style.color='var(--o3)';
+      var ci=document.getElementById('act-cal');var mi=document.getElementById('act-min');
+      if(ci&&(!ci.value||ci.value==='0')&&at.cal>0)ci.value=at.cal;
+      if(mi&&(!mi.value||mi.value==='0')&&at.min>0)mi.value=at.min;
+    };
+    cont.appendChild(b);
+  })(ACT_TYPES[i])}
+}
+function logActivity(){
+  var ci=document.getElementById('act-cal');
+  var mi=document.getElementById('act-min');
+  var si=document.getElementById('act-stand');
+  var ni=document.getElementById('act-notes');
+  var cal=parseInt(ci&&ci.value?ci.value:0)||0;
+  var min=parseInt(mi&&mi.value?mi.value:0)||0;
+  var stand=parseInt(si&&si.value?si.value:0)||0;
+  var notes=ni?ni.value.trim():'';
+  if(cal===0&&min===0&&stand===0){toast('Enter at least one value');return}
+  var typeName='Activity';
+  for(var k=0;k<ACT_TYPES.length;k++){if(ACT_TYPES[k].id===selActType)typeName=ACT_TYPES[k].nm}
+  var log=ST.actLog||[];
+  log.push({type:typeName,cal:cal,min:min,stand:stand,notes:notes,time:new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})});
+  ST.actLog=log;ST.actCal=(ST.actCal||0)+cal;ST.actMin=(ST.actMin||0)+min;ST.actStand=(ST.actStand||0)+stand;
+  svS();rActLog();
+  if(ci)ci.value='';if(mi)mi.value='';if(si)si.value='';if(ni)ni.value='';
+  selActType='';initActTypes();
+  toast('Logged! +'+cal+' cal, '+min+' min');
+}
+function rActLog(){
+  var tc=document.getElementById('act-total-cal');if(tc)tc.textContent=ST.actCal||0;
+  var tm=document.getElementById('act-total-min');if(tm)tm.textContent=ST.actMin||0;
+  var ts=document.getElementById('act-total-stand');if(ts)ts.textContent=ST.actStand||0;
+  var list=document.getElementById('act-log-list');if(!list)return;
+  list.innerHTML='';
+  var log=ST.actLog||[];if(!log.length)return;
+  for(var i=log.length-1;i>=0;i--){
+    var e=log[i];var d=document.createElement('div');
+    d.style.cssText='display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05)';
+    d.innerHTML='<div style="font-size:15px">'+(e.type.split(' ')[0]||'🏃')+'</div>'+
+      '<div style="flex:1"><div style="font-size:13px;font-weight:700;color:var(--tx)">'+e.type+'</div>'+
+      (e.notes?'<div style="font-size:11px;color:var(--tx3)">'+e.notes+'</div>':'')+
+      '</div><div style="text-align:right">'+
+      (e.cal?'<div style="font-family:Barlow Condensed,sans-serif;font-size:15px;font-weight:900;color:var(--o3)">'+e.cal+' cal</div>':'')+
+      (e.min?'<div style="font-size:11px;color:var(--gr);font-weight:700">'+e.min+' min</div>':'')+
+      (e.stand?'<div style="font-size:11px;color:var(--bl);font-weight:700">'+e.stand+' hrs</div>':'')+
+      '</div>';
+    list.appendChild(d);
+  }
+}
+
+// ── GOOGLE SHEETS SYNC ─────────────────────
+var GS_URL='https://script.google.com/macros/s/AKfycbx9klUA3oiOMgwY_rAGM4GqR0lOLH4xCdb6gHAKJNRWARbzR1tGcWmYU60b8dAUQeFK/exec';
+var GS_ON=true;
+function gsLoadURL(){try{var u=localStorage.getItem('ih_gs_url');if(u&&u.length>10)GS_URL=u}catch(e){}}
+function gsSave(){
+  if(!GS_ON||!GS_URL)return;
+  try{
+    var bp=(ST['v-bp']||'').split('/');
+    var p='action=log&date='+encodeURIComponent(TODAY)+'&weight='+encodeURIComponent(ST['v-wt']||'')+'&bp_sys='+encodeURIComponent(bp[0]||'')+'&bp_dia='+encodeURIComponent(bp[1]||'')+'&heart_rate='+encodeURIComponent(ST['v-hr']||'')+'&glucose='+encodeURIComponent(ST['v-bs']||'')+'&oura_sleep='+encodeURIComponent(ST['v-osl']||'')+'&calories='+encodeURIComponent(ST.tCal||0)+'&protein='+encodeURIComponent(ST.tPr||0)+'&carbs='+encodeURIComponent(ST.tCb||0)+'&fat='+encodeURIComponent(ST.tFat||0)+'&water_oz='+encodeURIComponent(wC*8)+'&cal_burned='+encodeURIComponent(ST.actCal||0)+'&ex_minutes='+encodeURIComponent(ST.actMin||0)+'&myair_score='+encodeURIComponent(ST['ma-tot']||'')+'&myair_ahi='+encodeURIComponent(ST['ma-ahi']||'');
+    var u=GS_URL+'?'+p;
+    fetch(u,{method:'GET',mode:'no-cors'}).catch(function(){});
+    var img=new Image();img.src=u;
+  }catch(e){}
+}
+function gsReport(period,cb){if(!GS_ON||!GS_URL){cb(null);return}fetch(GS_URL+'?action='+period).then(function(r){return r.json()}).then(cb).catch(function(){cb(null)})}
+function saveGSURL(){var inp=document.getElementById('gs-url-input');if(!inp||!inp.value.trim())return;GS_URL=inp.value.trim();GS_ON=true;try{localStorage.setItem('ih_gs_url',GS_URL)}catch(e){}toast('Connected!')}
+function showWeeklyReport(){var rep=document.getElementById('gs-report');if(!rep)return;rep.style.display='block';rep.innerHTML='Loading...';gsReport('week',function(d){rep.innerHTML=d&&d.ok?'<strong style="color:var(--gold)">This Week</strong><br>'+d.report:'No data yet.'})}
+function showMonthlyReport(){var rep=document.getElementById('gs-report');if(!rep)return;rep.style.display='block';rep.innerHTML='Loading...';gsReport('month',function(d){rep.innerHTML=d&&d.ok?'<strong style="color:var(--gold)">This Month</strong><br>'+d.report:'No data yet.'})}
+
 window.onload=function(){
+  gsLoadURL();
+  gsLoadURL();initActTypes();rActLog();
   setupN();startECG();tick();setInterval(tick,30000);updS();
   var ld=g('ld');setTimeout(function(){ld.classList.add('hide');setTimeout(function(){if(ld.parentNode)ld.parentNode.removeChild(ld)},900)},4200);
 };
