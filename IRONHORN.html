@@ -1197,6 +1197,16 @@ function logManual(){
   nm.value='';if(ci)ci.value='';if(pi)pi.value='';if(bi)bi.value='';if(fi)fi.value='';
   switchFoodTab(1);toast('Logged!');
 }
+function runSync(){
+  // Opens IRONHORN Sync shortcut
+  window.location.href = 'shortcuts://run-shortcut?name=IRONHORN%20Sync';
+  setTimeout(function(){
+    // Fallback - open shortcuts app
+    window.location.href = 'shortcuts://';
+  }, 1000);
+  toast('Opening IRONHORN Sync...');
+}
+
 function rQF(){
   var cont=g('quick-foods');if(!cont)return;
   cont.innerHTML='';
@@ -1655,7 +1665,7 @@ function adjRef(idx,delta){
   else toast(refs[idx].nm+': '+refs[idx].supply+' days');
 }
 
-var GS_URL='https://script.google.com/macros/s/AKfycbxPaHMXePXiWvDLTz3uofgNbDQ9UwawsrclNfYzl_7fy4-_IqqxfwgDbMxmNs4sFRpb/exec';
+var GS_URL='https://script.google.com/macros/s/AKfycbwr9Pw5v0EihVLptKqv-GnpuWsWQIzTWmmWVvnRyREAxQKT2WQ99yQd4WG3Ngq0kDnQ/exec';
 var GS_ON=true;
 function gsLoadURL(){try{var u=localStorage.getItem('ih_gs_url');if(u&&u.length>10)GS_URL=u}catch(e){}}
 function gsSave(){
@@ -1740,7 +1750,7 @@ function rActLog(){
 }
 
 // ── GOOGLE SHEETS SYNC ─────────────────────
-var GS_URL='https://script.google.com/macros/s/AKfycbxPaHMXePXiWvDLTz3uofgNbDQ9UwawsrclNfYzl_7fy4-_IqqxfwgDbMxmNs4sFRpb/exec';
+var GS_URL='https://script.google.com/macros/s/AKfycbwr9Pw5v0EihVLptKqv-GnpuWsWQIzTWmmWVvnRyREAxQKT2WQ99yQd4WG3Ngq0kDnQ/exec';
 var GS_ON=true;
 function gsLoadURL(){try{var u=localStorage.getItem('ih_gs_url');if(u&&u.length>10)GS_URL=u}catch(e){}}
 function gsSave(){
