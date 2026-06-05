@@ -1183,13 +1183,13 @@ function logManual(){
   switchFoodTab(1);toast('Logged!');
 }
 function runSync(){
-  // Opens IRONHORN Sync shortcut
-  window.location.href = 'shortcuts://run-shortcut?name=IRONHORN%20Sync';
-  setTimeout(function(){
-    // Fallback - open shortcuts app
-    window.location.href = 'shortcuts://';
-  }, 1000);
-  toast('Opening IRONHORN Sync...');
+  // Try to run the shortcut directly
+  var a = document.createElement('a');
+  a.href = 'shortcuts://run-shortcut?name=IRONHORN%20Sync';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  toast('Opening IRONHORN Sync... switch to Shortcuts app');
 }
 
 function rQF(){
